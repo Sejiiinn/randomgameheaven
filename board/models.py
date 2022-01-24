@@ -1,3 +1,11 @@
 from django.db import models
 
-# Create your models here.
+class Main(models.Model):
+    game_id = models.IntegerField(primary_key=True)
+    game_title = models.CharField(max_length = 32)
+    game_content = models.CharField(max_length = 255)
+
+    class Meta():
+        db_table = 'game'
+        app_label = 'main'
+        managed = False
