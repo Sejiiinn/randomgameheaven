@@ -101,8 +101,8 @@
     <div style="width:80%;height:0 auto;margin:0 auto;">
         {% for item in data %}
         <div class="contentbox">
-            <img src="/static/img/anime/review-1.jpg" style="width:80;height:80px">
-            <p style>{{item.game_title}} {{item.game_content}}</p>
+            <img src="/static/img/anime/review-1.jpg" style="width:80;height:80px;float:left">
+            {{item.game_title}} {{item.game_content}}
         </div>
         {% endfor %}
     </div>
