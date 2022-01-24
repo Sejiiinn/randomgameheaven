@@ -23,4 +23,5 @@ urlpatterns = [
     path('board/', include('board.urls')),
     path('login/', include('login.urls')),
     path('bungae/', include('bungae.urls')),
+    path('mypage/', include('mypage.urls')),
 ]
