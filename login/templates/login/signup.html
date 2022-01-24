@@ -57,6 +57,14 @@
                 <div class="col-lg-2">
                     <div class="header__right">
                         <a href="./login.html"><span class="icon_profile"></span></a>
+<<<<<<< HEAD
+=======
+                        {% if request.session.user_id %}
+                            {{ request.session.nickname }} 님 반갑습니다.
+                        {% else %}
+                            <p><span style="color:white">현재 상태 : Guest</span></p>
+                        {% endif %}
+>>>>>>> d2c0615e9d3cd479ec67ae612ae63f784b5d16a2
                     </div>
                 </div>
             </div>
