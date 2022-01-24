@@ -57,7 +57,7 @@
                 </div>
                 <div class="col-lg-2">
                     <div class="header__right">
-                        <a href="{% url 'login' %}"><span class="icon_profile"></span></a>
+                        <a href="{% url 'login:login' %}"><span class="icon_profile"></span></a>
                         {% if request.session.user_id %}
                             {{ request.session.nickname }} 님 반갑습니다.
                         {% else %}

@@ -3,6 +3,8 @@ from django.utils import timezone
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+
+
 def signup(request):
     if request.method == 'POST':
         user_id = request.POST.get('user_id')
@@ -13,6 +15,7 @@ def signup(request):
             user_id=user_id, user_pw=user_pw, nickname=nickname)
         m.date_joined = timezone.now()
         m.save()
+
         return HttpResponse(
             '가입 완료<br>%s %s %s' % (user_id, user_pw, nickname))
     else:
