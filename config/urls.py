@@ -24,4 +24,5 @@ urlpatterns = [
     path('login/', include('login.urls')),
     path('bungae/', include('bungae.urls')),
     path('write', include('write.urls')),
+    path('mypage/', include('mypage.urls')),
 ]
