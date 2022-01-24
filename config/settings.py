@@ -78,9 +78,18 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'custom': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'aivle_2',
+        'USER': 'aivle_2',
+        'PASSWORD': '1q2w3e4r',
+        'HOST': '15.164.153.191',
+        'PORT': 3306
     }
 }
 
+DATABASE_ROUTERS = [''.router.DBRouter]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
