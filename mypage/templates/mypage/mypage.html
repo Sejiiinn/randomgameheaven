@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zxx">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Anime Template">
+    <meta name="keywords" content="Anime, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>랜선 게임 천국</title>
+
+    <!-- Google Font -->
+    <link href="{% static 'https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap' %}" rel="stylesheet">
+    <link href="{% static 'https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap' %}"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/plyr.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <a href="">
+                            <img src="{% static 'img/logo1.png' %}" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="header__nav">
+                        <nav class="header__menu mobile-menu">
+                            <ul>
+                                <li class="active"><a href="">게임 검색</a></li>
+                                <li><a href="./categories.html">술게임 추천 게시판</a></li>
+                                <li><a href="./blog.html">온라인 번개 모임 개시판</a></li>
+                                <li><a href="#">마이 페이지</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="header__right">
+                        <a href="./login.html"><span class="icon_profile"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+    <section class="login spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="login__form">
+                        <h3>비밀번호 변경하기</h3>
+                        <form action="#">
+                            <div class="input__item">
+                                <input type="password" placeholder="현재 비밀번호">
+                            </div>
+                            <div class="input__item">
+                                <input type="password" placeholder="변경할 비밀번호">
+                            </div>
+                            <button type="submit" class="site-btn">변경하기</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="login__form">
+                        <h3>닉네임 변경하기</h3>
+                        <form action="#">
+                            <div class="input__item">
+                                <input type="text" placeholder="변경할 닉네임">
+                            </div>
+                            <button type="submit" class="site-btn">변경하기</button>
+                        </form>
+                    </div>
+                </div>
+                
+        <div class="container">
+            <br><br><br><br>
+            <div class='myboard'>
+            <h3>내가 쓴 글</h3>      
+            <br>    
+            <table class="table table-dark table-striped">
+                <thead>
+                <tr>
+                    <th>글 번호</th>
+                    <th>제목</th>
+                    <th>작성 일자</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% comment %} 여기서부터  675라인까지 날림 {% endcomment %}
+    <!-- Product Section Begin -->
+ 
+<!-- Product Section End -->
+
+<!-- Footer Section Begin -->
+<footer class="footer">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="footer__logo">
+                    <a href=""><img src="{% static 'img/logo1.png' %}" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="footer__nav">
+                    {% comment %} <ul>
+                        <li class="active"><a href="main/main.html">랜덤으로 게임 시작(고쳐야함)</a></li>
+                    </ul>
+                </div> {% endcomment %}
+            </div>
+          </div>
+      </div>
+  </footer>
+  <!-- Footer Section End -->
+
+  <!-- Search model Begin -->
+  <div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch"><i class="icon_close"></i></div>
+        <form class="search-model-form">
+            <input type="text" id="search-input" placeholder="Search here.....">
+        </form>
+    </div>
+</div>
+<!-- Search model end -->
+
+<!-- Js Plugins -->
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/player.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/mixitup.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+
+</body>
+
+</html>
