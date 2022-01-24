@@ -91,7 +91,7 @@
                     <div class="login__form">
                         <h3>Login</h3>
                         
-                        <form method="post" action="{% url 'login:login' %}">
+                        <form action="{% url 'login:login' %}" method="post">
                             {% csrf_token %}
                             <div class="input__item">
                                 <input type="text" placeholder="아이디를 입력하세요" name="user_id">

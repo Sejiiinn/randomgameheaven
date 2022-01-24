@@ -25,15 +25,15 @@ def signup(request):
 # Create your views here.
 def login(request):
     if request.method == 'POST':
-        user_id = request.POST.get('user_id')
-        user_pw = request.POST.get('user_pw')
+        user_id = request.POST.get("user_id")
+        user_pw = request.POST.get("user_pw")
         try:
             m = user.objects.get(user_id=user_id, user_pw=user_pw)
         except user.DoesNotExist as e:
             return HttpResponse('로그인 실패')
         else:
-            request.session['user_id'] = m.user_id
-            request.session['nickname'] = m.nickname
-        return redirect('http://127.0.0.1:8000/')
+            request.session["user_id"] = m.user_id
+            request.session["user_pw"] = m.nickname
+        return redirect( 'main:main' )
     else:
         return render(request, 'login/login.html')
