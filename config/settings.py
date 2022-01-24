@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'login',
     'main',
     'board',
+    'bungae',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

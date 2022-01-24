@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="{% url 'main:main' %}">
+                        <a href="">
                             <img src="{% static 'img/logo1.png' %}" alt="">
                         </a>
                     </div>
@@ -49,7 +49,7 @@
                             <ul>
                                 <li class="active"><a href="">게임 검색</a></li>
                                 <li><a href="./categories.html">술게임 추천 게시판</a></li>
-                                <li><a href="{% url 'bungae:bungae' %}">온라인 번개 모임 개시판</a></li>
+                                <li><a href="./blog.html">온라인 번개 모임 개시판</a></li>
                                 <li><a href="#">마이 페이지</a></li>
                             </ul>
                         </nav>
@@ -57,12 +57,7 @@
                 </div>
                 <div class="col-lg-2">
                     <div class="header__right">
-                        <a href="{% url 'login' %}"><span class="icon_profile"></span></a>
-                        {% if request.session.user_id %}
-                            {{ request.session.nickname }} 님 반갑습니다.
-                        {% else %}
-                            <p><span style="color:white">현재 상태 : Guest</span></p>
-                        {% endif %}
+                        <a href="./login.html"><span class="icon_profile"></span></a>
                     </div>
                 </div>
             </div>
@@ -70,28 +65,72 @@
         </div>
     </header>
     <!-- Header End -->
-
-    <!-- Hero Section Begin -->
-    <section class="hero">
+    <section class="login spad">
         <div class="container">
-            <div class="hero__slider owl-carousel">
-                <div class="hero__items set-bg" data-setbg="{% static 'img/hero/첫화면1.png' %}">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="hero__text">
-                                <div class="label">Adventure</div>
-                                <h2>Fate / Stay Night: Unlimited Blade Work</h2>
-                                <p>After 30 days of travel across the world...</p>
-                                <a href="#"><span>랜덤으로 게임 시작</span> <i class="fa fa-angle-right"></i></a>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="login__form">
+                        <h3>비밀번호 변경하기</h3>
+                        <form action="#">
+                            <div class="input__item">
+                                <input type="password" placeholder="현재 비밀번호">
                             </div>
-                        </div>
+                            <div class="input__item">
+                                <input type="password" placeholder="변경할 비밀번호">
+                            </div>
+                            <button type="submit" class="site-btn">변경하기</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="login__form">
+                        <h3>닉네임 변경하기</h3>
+                        <form action="#">
+                            <div class="input__item">
+                                <input type="text" placeholder="변경할 닉네임">
+                            </div>
+                            <button type="submit" class="site-btn">변경하기</button>
+                        </form>
                     </div>
                 </div>
                 
+        <div class="container">
+            <br><br><br><br>
+            <div class='myboard'>
+            <h3>내가 쓴 글</h3>      
+            <br>    
+            <table class="table table-dark table-striped">
+                <thead>
+                <tr>
+                    <th>글 번호</th>
+                    <th>제목</th>
+                    <th>작성 일자</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            </div>
             </div>
         </div>
     </section>
-    <!-- Hero Section End -->
+
+
+
+
 {% comment %} 여기서부터  675라인까지 날림 {% endcomment %}
     <!-- Product Section Begin -->
  
