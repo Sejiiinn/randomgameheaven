@@ -9,7 +9,7 @@ def mypage_main(request):
         return render(request, 'mypage/mypage.html')
      
     except:
-        return redirect('login')
+        return redirect('login:login')
     
 def my_board(request):
     board_list = Board.objects.all()
