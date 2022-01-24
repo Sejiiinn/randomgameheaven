@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'main',
     'board',
     'bungae',
+    'write',
+    'mypage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -87,7 +89,7 @@ DATABASES = {
         'NAME': 'aivle_2',
         'USER': 'aivle_2',
         'PASSWORD': '1q2w3e4r',
-        'HOST': '15.164.153.191',
+        'HOST': '13.125.52.234',
         'PORT': 3306
     }
 }
