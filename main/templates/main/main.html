@@ -57,7 +57,12 @@
                 </div>
                 <div class="col-lg-2">
                     <div class="header__right">
-                        <a href="./login.html"><span class="icon_profile"></span></a>
+                        <a href="{% url 'login' %}"><span class="icon_profile"></span></a>
+                        {% if request.session.user_id %}
+                            {{ request.session.user_name }} 님 반갑습니다.
+                        {% else %}
+                            <p><span style="color:white">현재 상태 : Guest</span></p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
