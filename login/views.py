@@ -2,7 +2,7 @@ from email import message
 from pyexpat.errors import messages
 from .models import user
 from django.utils import timezone
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
@@ -17,9 +17,8 @@ def signup(request):
             user_id=user_id, user_pw=user_pw, nickname=nickname)
         m.date_joined = timezone.now()
         m.save()
-
-        return HttpResponse(
-            '가입 완료<br>%s %s %s' % (user_id, user_pw, nickname))
+        messages.info(request, '회원가입이 완료되었습니다.')
+        return HttpResponseRedirect('login'+nickname)
     else:
         return render(request, 'login/signup.html')
 
@@ -36,6 +35,7 @@ def login(request):
             
         else:
             request.session["user_id"] = m.user_id
+            request.session["user_pw"] = m.user_pw
             request.session["nickname"] = m.nickname
         return redirect( 'main:main' )
     else:
