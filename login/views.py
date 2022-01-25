@@ -1,4 +1,3 @@
-from email import message
 from pyexpat.errors import messages
 from .models import user
 from django.utils import timezone
@@ -15,8 +14,19 @@ def signup(request):
         m = user(
             user_id=user_id, user_pw=user_pw, nickname=nickname)
         m.date_joined = timezone.now()
-        m.save()    
-        return render(request, 'login/signup.html', messages.info(request, '회원가입 완료! 로그인 페이지로 넘어가주세요.'))
+        if user.objects.filter(user_id=user_id).exists():
+            return render(request, 'login/signup.html', messages.info(request, '중복된 ID가 존재합니다.'))
+        elif user.objects.filter(nickname=nickname).exists():
+            return render(request, 'login/signup.html', messages.info(request, '중복된 NickName이 존재합니다.'))
+        elif m.user_id == "":
+            return render(request, 'login/signup.html', messages.info(request, 'ID를 입력해주세요.'))
+        elif m.user_pw == "":
+            return render(request, 'login/signup.html', messages.info(request, 'PW를 입력해주세요.'))
+        elif m.nickname == "":
+            return render(request, 'login/signup.html', messages.info(request, 'nickname를 입력해주세요.'))
+        else:
+            m.save()    
+            return render(request, 'login/signup.html', messages.info(request, '회원가입 완료! 로그인 페이지로 넘어가주세요.'))
         
     else:
         #messages.info(request, '테스트입니다.')
