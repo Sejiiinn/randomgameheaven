@@ -1,20 +1,18 @@
 from django.db import models
-from datetime import datetime
+import datetime
 from login.models import user
 
 # Create your models here.
 
 
 
-class Board(models.Model):
-    board_num = models.IntegerField(primary_key=True, max_length=10, unique=True)
-    user_id = models.ForeignKey(user, on_delete=models.SET_NULL, null=True)
-    title = models.TextField()
-    content = models.TextField()
-    cre_date = models.TimeField()
-    board_type = models.CharField(max_length=50)
+class BungaeBoard(models.Model):
+    bungae_num = models.AutoField(primary_key=True)
+    User = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
+    content = models.TextField(null=True)
+    cre_date = models.TextField(null=True)
 
     class Meta:
-        db_table = 'board'
-        app_label = 'bungae'
+        db_table = 'bungaeboard'
+        #app_label = 'bungae'
         managed = True
