@@ -33,7 +33,13 @@ def login(request):
             return HttpResponse('로그인 실패')
         else:
             request.session["user_id"] = m.user_id
-            request.session["user_pw"] = m.nickname
+            request.session["nickname"] = m.nickname
         return redirect( 'main:main' )
     else:
         return render(request, 'login/login.html')
+
+
+def logout(request):
+
+    request.session.flush() # 전체 삭제
+    return redirect('main:main')
