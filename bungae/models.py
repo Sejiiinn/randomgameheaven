@@ -11,7 +11,7 @@ class Board(models.Model):
     user_id = models.ForeignKey(user, on_delete=models.SET_NULL, null=True)
     title = models.TextField()
     content = models.TextField()
-    cre_date = models.TimeField(default=datetime.today())
+    cre_date = models.TimeField()
     board_type = models.CharField(max_length=50)
 
     class Meta:
