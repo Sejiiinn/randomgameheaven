@@ -80,8 +80,11 @@
                             </div>
                             <div class="anime__review__item">
                                 <div class="anime__review__item__text">
-                                    <h6>닉네임 입력 - <span>게시글 등록 시간</span></h6>
+                                    <h6>{{user_id}} - <span>{{nowDatetime}}</span></h6>
                                     <p>{{result}}</p>
+                                </div>
+                                <div class = "review__delete">
+                                    <button type="submit">삭제</button>
                                 </div>
                             </div>
                             
@@ -91,7 +94,7 @@
                                 <h5>게시글 작성</h5>
                             </div>
                             <form action="" method = "post">
-                                <textarea placeholder="입력하세요" input type = "text" name = "a"></textarea>
+                                <textarea placeholder="입력하세요" input type = "text" name = "input_text"></textarea>
                                 {% csrf_token %}
                                 <button type="submit"><i class="fa fa-location-arrow"></i> 등록</button>
                             </form>
