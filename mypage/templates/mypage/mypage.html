@@ -50,7 +50,7 @@
                                 <li class="active"><a href="">게임 검색</a></li>
                                 <li><a href="{% url 'recommendation:recommendation' %}">술게임 추천 게시판</a></li>
                                 <li><a href="{% url 'bungae:bungae' %}">온라인 번개 모임 개시판</a></li>
-                                <li><a href="#">마이 페이지</a></li>
+                                <li><a href="{% url 'mypage:mypage_main' %}">마이 페이지</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -65,19 +65,30 @@
         </div>
     </header>
     <!-- Header End -->
+    <section class = "show__profile">
+        <div class='container'>
+            <div class='show__profile'>
+                <h3>내 정보</h3>
+                <table>
+                    <tr>
+                        <td>아이디</td>
+                        <td>{{ request.session.user_id }}</td>
+                    </tr>
+                    <tr>
+                        <td>닉네임</td>
+                        <td>{{ request.session.user_nickname }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
     <section class="login spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>비밀번호 변경하기</h3>
-                        <form action="#">
-                            <div class="input__item">
-                                <input type="password" placeholder="현재 비밀번호">
-                            </div>
-                            <div class="input__item">
-                                <input type="password" placeholder="변경할 비밀번호">
-                            </div>
+                        <form action="./changepw/">
                             <button type="submit" class="site-btn">변경하기</button>
                         </form>
                     </div>

@@ -1,6 +1,8 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import board, user
+# from .forms import PWChangeForm
+# from django.contrib.auth import update_session_auth_hash
 
 def mypage_main(request):
     userid = request.session.get('user_id')
@@ -11,6 +13,9 @@ def mypage_main(request):
         return render(request, 'mypage/mypage.html')
     else:
         return redirect('login:login')
+    
+# def chage_pw(request):
+#     return render(request, 'mypage/change_pw.html')
     
 def my_board(request):
     board_list = board.objects.all()
