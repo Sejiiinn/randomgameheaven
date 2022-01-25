@@ -97,6 +97,7 @@ DATABASES = {
 DATABASE_ROUTERS = [
     'main.router.DBRouter',
     'mypage.router.MypageDBRouter',
+    'bungae.router.BungaeDBRouter',
     ]
 
 # Password validation
@@ -144,3 +145,5 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
