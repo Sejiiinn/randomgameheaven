@@ -95,7 +95,10 @@ DATABASES = {
     }
 }
 
-DATABASE_ROUTERS = ['main.router.DBRouter']
+DATABASE_ROUTERS = [
+    'main.router.DBRouter',
+    'mypage.router.MypageDBRouter',
+    ]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
