@@ -118,7 +118,7 @@
             <div style="float:left">
                 <img src="{{item.game_img}}" onerror="this.src='/static/img/anime/review-1.jpg'" style="width:80px;height:80px;float:left">
                 <p type="button" data-toggle="modal" data-target="#myModal" 
-                    data-title="{{item.game_title}}" data-id="{{item.game_id}}"
+                    data-title="{{item.game_title}}" data-detail="{{item.game_detail}}"
                     class="title"><b>{{item.game_title}}</b></p> <p class="title">{{item.game_content}}</p>
             </div>
             <div style="float:right" class="anime__details__form">
@@ -214,9 +214,9 @@
     $('#myModal').on('show.bs.modal', function (event) { // myModal 윈도우가 오픈할때 아래의 옵션을 적용
       let button = $(event.relatedTarget) // 모달 윈도우를 오픈하는 버튼
       let titleTxt = button.data('title') // 버튼에서 data-title 값을 titleTxt 변수에 저장
-      let detailTxt = button.data('id')
+      let detailTxt = button.data('detail')
       let modal = $(this)
       modal.find('.modal-title').text(titleTxt) // 모달위도우에서 .modal-title을 찾아 titleTxt 값을 치환
-      modal.find('.modal-gamedetail').text(detailTxt) 
+      modal.find('.modal-gamedetail').html(detailTxt) 
     })
 </script>
