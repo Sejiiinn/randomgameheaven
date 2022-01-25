@@ -1,11 +1,10 @@
 from gettext import translation
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-
-from mypage.forms import ChangePasswordForm
 from .models import user, Usergame
 from bungae.models import *
 from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 def mypage_main(request):
@@ -25,26 +24,42 @@ def mypage_main(request):
     else:
         return redirect('login:login')
 
-def chage_pw(request):
+def change_pw(request):
+    userid = request.session.get('user_id')
+    userpw = request.session.get('user_pw')
+    usernickname = request.session.get('nickname')
+    
+    if request.method=='POST':
+        old_pw = str(request.POST.get('old_pw'))
+        new_pw = str(request.POST.get('new_pw'))
+        new2_pw = str(request.POST.get('new2_pw'))
+        
+        if userpw == old_pw:
+            user_info = user.objects.get(user_id=userid)
+            user_info.user_pw = new2_pw
+            user_info.save()
+            return HttpResponse('비밀번호가 변경되었습니다.')
+        else:
+            return HttpResponse('비밀번호가 다릅니다.')
+        
+    return render(request, 'mypage/change_pw.html')
+
+def change_nm(request):
+    userid = request.session.get('user_id')
+    usernickname = request.session.get('nickname')
+    
     if request.method == 'POST':
-        change_pw_form = ChangePasswordForm(request.user, request.POST)
-        if change_pw_form.is_valid():
-            user = change_pw_form.save()
-            update_session_auth_hash(request, user)
-            messages.success(request, "비밀번호가 변경되었습니다.")
-            return redirect('mypage:mypage_main')
-    else:
-        change_pw_form = ChangePasswordForm(request.user)
-    
-    return render(request, 'mypage/change_pw.html', {'change_pw_form':change_pw_form})
-    
-# def my_board(request):
-#     userid = request.session.get('user_id')
-#     user_info = user.objects.get(user_id=str(userid)).user_id
-    
-#     bungae = BungaeBoard.objects.filter(User=user_info)
-#     user_game = POST.objects.filter(user_id=user_info)
-    
-    # return render(request, 'mypage/mypage.html',
-    #               {'bungae':bungae,
-    #                'user_game':user_game})
+        new_nickname = str(request.POST.get('new_nm'))
+        
+        if usernickname != new_nickname:
+            user_info = user.objects.get(user_id=userid)
+            user_info.nickname = usernickname
+            user_info.save()
+            return HttpResponse('닉네임이 변경되었습니다.')
+        else:
+            return HttpResponse('다시 입력하세요.')
+    return render(request, 'mypage/change_nm.html')
+        
+        
+        
+    return 
