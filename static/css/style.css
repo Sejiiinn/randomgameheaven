@@ -1715,16 +1715,34 @@ ol {
 /*---------------------
   Mypage
 -----------------------*/
+.myboard {
+	padding-top: 50px;
+	padding-bottom: 0px;
+}
 .myboard h3 {
 	color: #ffffff;
 	font-weight: 700;
 	font-family: "Oswald", sans-serif;
 	margin-bottom: 30px;
 }
+.profile {
+	padding-top: 80px;
+	padding-bottom: 0px;
+}
 
+.show__profile {
+	padding-left: 50px;
+}
+
+.profile h3{
+	color: #ffffff;
+	font-weight: 700;
+	font-family: "Oswald", sans-serif;
+	margin-bottom: 30px;
+}
 .nickname__form {
 	position: relative;
-	padding-left: 145px;
+	padding-left: 120px;
 }
 
 .nickname__form h3 {
@@ -1802,6 +1820,13 @@ ol {
 	bottom: 12px;
 }
 
+.show__profile table tr td {
+	font-size: 20px;
+	padding: 10px;
+	color: #ffffff;
+}
+
+
 /*---------------------
   Login
 -----------------------*/
@@ -1813,7 +1838,7 @@ ol {
 
 .login__form {
 	position: relative;
-	padding-left: 145px;
+	padding-left: 50px;
 }
 
 .login__form:after {
@@ -2115,6 +2140,14 @@ ol {
 	.blog__item__text {
 		padding: 0 50px;
 	}
+	.nickname__form {
+		position: relative;
+		padding-left: 32px;
+	}
+	.changepw__form {
+		position: relative;
+		padding-left: 32px;
+	}
 }
 
 /* Tablet Device = 768px */
@@ -2208,10 +2241,17 @@ ol {
 		padding-left: 0;
 		margin-bottom: 40px;
 	}
+	.nickname__form {
+		padding-left: 0;
+		margin-bottom: 40px;
+	}
 	.login__form:after {
 		display: none;
 	}
 	.login__form form .input__item {
+		width: auto;
+	}
+	.nickname__form form .input__item {
 		width: auto;
 	}
 	.login__register {
@@ -2337,10 +2377,17 @@ ol {
 		padding-left: 0;
 		margin-bottom: 40px;
 	}
+	.nickname__form {
+		padding-left: 0;
+		margin-bottom: 40px;
+	}
 	.login__form:after {
 		display: none;
 	}
 	.login__form form .input__item {
+		width: auto;
+	}
+	.nickname__form form .input__item {
 		width: auto;
 	}
 	.signup .login__social__links {
