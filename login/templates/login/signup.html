@@ -48,7 +48,7 @@
                             <ul>
                                 <li class="active"><a href="">게임 검색</a></li>
                                 <li><a href="./categories.html">술게임 추천 게시판</a></li>
-                                <li><a href="./blog.html">온라인 번개 모임 개시판</a></li>
+                                <li><a href="./blog.html">온라인 번개 모임 게시판</a></li>
                                 <li><a href="#">마이 페이지</a></li>
                             </ul>
                         </nav>
@@ -107,6 +107,15 @@
                                 <span>Nik</span>
                             </div>
                             <button type="submit" class="site-btn">회원가입하기</button>
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <div class="alert alert-primary" role="alert">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
                         </form>
                         <h5>이미 가입을 하셨나요? <a href="{% url 'login:login' %}">로그인!</a></h5>
                     </div>

@@ -49,7 +49,7 @@
                             <ul>
                                 <li><a href="{% url 'board:board_main' %}">게임 검색</a></li>
                                 <li><a href="{% url 'recommendation:recommendation' %}">술게임 추천 게시판</a></li>
-                                <li><a href="{% url 'bungae:bungae' %}">온라인 번개 모임 개시판</a></li>
+                                <li><a href="{% url 'bungae:bungae' %}">온라인 번개 모임 게시판</a></li>
                                 <li><a href="{% url 'mypage:mypage_main' %}">마이 페이지</a></li>
                             </ul>
                         </nav>
@@ -59,7 +59,10 @@
                     <div class="header__right">
                         <a href="{% url 'login:login' %}"><span class="icon_profile"></span></a>
                         {% if request.session.user_id %}
-                            {{ request.session.nickname }} 님 반갑습니다.
+                            <a href="{% url 'login:logout' %}">
+                                {{ request.session.nickname }} (로그아웃)
+                            </a>
+
                         {% else %}
                             <p><span style="color:white">현재 상태 : Guest</span></p>
                         {% endif %}
@@ -79,9 +82,9 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
-                                <div class="label">Adventure</div>
-                                <h2>Fate / Stay Night: Unlimited Blade Work</h2>
-                                <p>After 30 days of travel across the world...</p>
+                                <div class="label" style="opacity:0">Adventure</div>
+                                <h2 style="opacity:0">Fate / Stay Night: Unlimited Blade Work</h2>
+                                <p style="opacity:0">After 30 days of travel across the world...</p>
                                 <a href="#"><span>랜덤으로 게임 시작</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>

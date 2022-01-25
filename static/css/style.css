@@ -1715,16 +1715,29 @@ ol {
 /*---------------------
   Mypage
 -----------------------*/
+.myboard {
+	padding-top: 50px;
+	padding-bottom: 0px;
+}
 .myboard h3 {
 	color: #ffffff;
 	font-weight: 700;
 	font-family: "Oswald", sans-serif;
 	margin-bottom: 30px;
 }
-
+.show__profile {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.show__profile h3{
+	color: #ffffff;
+	font-weight: 700;
+	font-family: "Oswald", sans-serif;
+	margin-bottom: 30px;
+}
 .nickname__form {
 	position: relative;
-	padding-left: 145px;
+	padding-left: 120px;
 }
 
 .nickname__form h3 {
@@ -1802,6 +1815,87 @@ ol {
 	bottom: 12px;
 }
 
+.changepw__form {
+	position: relative;
+	padding-left: 120px;
+}
+
+.changepw__form h3 {
+	color: #ffffff;
+	font-weight: 700;
+	font-family: "Oswald", sans-serif;
+	margin-bottom: 30px;
+}
+
+.changepw__form form .input__item {
+	position: relative;
+	width: 900px;
+	margin-bottom: 20px;
+}
+
+.changepw__form form .input__item:before {
+	position: absolute;
+	left: 50px;
+	top: 10px;
+	height: 30px;
+	width: 1px;
+	background: #b7b7b7;
+	content: "";
+}
+
+.changepw__form form .input__item input {
+	height: 50px;
+	width: 100%;
+	font-size: 15px;
+	color: #b7b7b7;
+	background: #ffffff;
+	border: none;
+	padding-left: 76px;
+}
+
+.changepw__form form .input__item input::-webkit-input-placeholder {
+	color: #b7b7b7;
+}
+
+.changepw__form form .input__item input::-moz-placeholder {
+	color: #b7b7b7;
+}
+
+.changepw__form form .input__item input:-ms-input-placeholder {
+	color: #b7b7b7;
+}
+
+.changepw__form form .input__item input::-ms-input-placeholder {
+	color: #b7b7b7;
+}
+
+.changepw__form form .input__item input::placeholder {
+	color: #b7b7b7;
+}
+
+.changepw__form form .input__item span {
+	color: #b7b7b7;
+	font-size: 20px;
+	position: absolute;
+	left: 15px;
+	top: 13px;
+}
+
+.changepw__form form button {
+	border-radius: 0;
+	margin-top: 10px;
+}
+
+.changepw__form .forget_pass {
+	font-size: 15px;
+	color: #ffffff;
+	display: inline-block;
+	position: absolute;
+	right: 60px;
+	bottom: 12px;
+}
+
+
 /*---------------------
   Login
 -----------------------*/
@@ -1813,7 +1907,7 @@ ol {
 
 .login__form {
 	position: relative;
-	padding-left: 145px;
+	padding-left: 50px;
 }
 
 .login__form:after {
@@ -2115,6 +2209,14 @@ ol {
 	.blog__item__text {
 		padding: 0 50px;
 	}
+	.nickname__form {
+		position: relative;
+		padding-left: 32px;
+	}
+	.changepw__form {
+		position: relative;
+		padding-left: 32px;
+	}
 }
 
 /* Tablet Device = 768px */
@@ -2208,10 +2310,17 @@ ol {
 		padding-left: 0;
 		margin-bottom: 40px;
 	}
+	.nickname__form {
+		padding-left: 0;
+		margin-bottom: 40px;
+	}
 	.login__form:after {
 		display: none;
 	}
 	.login__form form .input__item {
+		width: auto;
+	}
+	.nickname__form form .input__item {
 		width: auto;
 	}
 	.login__register {
@@ -2337,10 +2446,17 @@ ol {
 		padding-left: 0;
 		margin-bottom: 40px;
 	}
+	.nickname__form {
+		padding-left: 0;
+		margin-bottom: 40px;
+	}
 	.login__form:after {
 		display: none;
 	}
 	.login__form form .input__item {
+		width: auto;
+	}
+	.nickname__form form .input__item {
 		width: auto;
 	}
 	.signup .login__social__links {
