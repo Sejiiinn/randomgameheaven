@@ -23,7 +23,7 @@ def signup(request):
         elif m.user_pw == "":
             return render(request, 'login/signup.html', messages.info(request, 'PW를 입력해주세요.'))
         elif m.nickname == "":
-            return render(request, 'login/signup.html', messages.info(request, 'nickname를 입력해주세요.'))
+            return render(request, 'login/signup.html', messages.info(request, 'nickname을 입력해주세요.'))
         else:
             m.save()    
             return render(request, 'login/signup.html', messages.info(request, '회원가입 완료! 로그인 페이지로 넘어가주세요.'))
@@ -41,7 +41,7 @@ def login(request):
         try:
             m = user.objects.get(user_id=user_id, user_pw=user_pw)
         except user.DoesNotExist as e:
-            return render(request, 'login/login.html', messages.warning(request, "아이디와 패스워드를 확인하세요."))
+            return render(request, 'login/login.html', messages.warning(request, "아이디와 패스워드를 확인해주세요."))
             
         else:
             request.session["user_id"] = m.user_id
