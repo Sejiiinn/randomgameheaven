@@ -174,11 +174,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                        {% for data in my_board %}
+                        {% for data in board %}
                         <tr>
-                            <td>{{ data.board_num }}</td>
+                            <td>{{ data.bungae_num }}</td>
                             <td>{{ data.title }}</td>
-                            <td>{{ data.board_type }}</td>
+                            <td>{{ data.post_title }}</td>
                             <td>{{ data.cre_date }}</td>
                         </tr>
                         {% endfor %}

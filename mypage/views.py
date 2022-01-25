@@ -6,13 +6,17 @@ from .models import board, user
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 
+from bungae.models import BungaeBoard
+
 def mypage_main(request):
     userid = request.session.get('user_id')
+    board = BungaeBoard.objects.filter(User = str(userid)).order_by('-cre_date')
+
     if userid:
         user_info = user.objects.get(pk=userid)
         user_pw = user_info.user_pw
         nickname = user_info.nickname
-        return render(request, 'mypage/mypage.html')
+        return render(request, 'mypage/mypage.html', {'board' : board})
     else:
         return redirect('login:login')
 

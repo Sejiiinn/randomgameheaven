@@ -11,12 +11,12 @@ class user(models.Model):
         managed = False
     
 class board(models.Model):
-    board_num = models.IntegerField(primary_key=True)
+    board_num = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(user, on_delete=models.CASCADE)
-    title = models.TextField()
-    content = models.TextField()
-    cre_date = models.DateTimeField(auto_now_add=True)
-    board_type = models.CharField(max_length=50)
+    title = models.TextField(null = True)
+    content = models.TextField(null = True)
+    cre_date = models.DateTimeField(null = True)
+    board_type = models.CharField(max_length=50, null = True)
     
     class Meta:
         db_table = 'board'
