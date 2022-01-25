@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'bungae',
     'write',
     'mypage',
+    'recommendation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
