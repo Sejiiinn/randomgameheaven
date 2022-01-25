@@ -1826,6 +1826,9 @@ ol {
 	color: #ffffff;
 }
 
+.modal-body input__item {
+	margin-bottom: 20px;
+}
 
 /*---------------------
   Login
