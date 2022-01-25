@@ -1,4 +1,7 @@
+from tkinter import CASCADE
 from django.db import models
+from django.forms import ImageField
+from wordcloud import ImageColorGenerator
 
 class user(models.Model):
     user_id = models.CharField(primary_key=True, max_length=50)
@@ -9,16 +12,16 @@ class user(models.Model):
         db_table = 'user'
         app_label = 'mypage'
         managed = False
-    
-class board(models.Model):
-    board_num = models.IntegerField(primary_key=True)
-    user_id = models.ForeignKey(user, on_delete=models.CASCADE)
-    title = models.TextField()
-    content = models.TextField()
-    cre_date = models.DateTimeField(auto_now_add=True)
-    board_type = models.CharField(max_length=50)
+        
+class Usergame(models.Model):
+    user_game_id = models.IntegerField(primary_key=True)
+    user_id = models.ForeignKey(user, on_delete=CASCADE, max_length=50)
+    user_game_title = models.CharField(max_length=50)
+    user_game_content = models.TextField()
+    user_game_img = ImageField()
+    date_time = models.DateTimeField()
     
     class Meta:
-        db_table = 'board'
+        db_table = 'user_game'
         app_label = 'mypage'
         managed = False

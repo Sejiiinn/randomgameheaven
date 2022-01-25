@@ -174,12 +174,21 @@
                     </tr>
                     </thead>
                     <tbody>
-                        {% for data in my_board %}
+                        {% csrf_token %}
+                        {% for g in game %}
                         <tr>
-                            <td>{{ data.board_num }}</td>
-                            <td>{{ data.title }}</td>
-                            <td>{{ data.board_type }}</td>
-                            <td>{{ data.cre_date }}</td>
+                            <td>{{ g.user_game_id }}</td>
+                            <td>{{ g.user_game_title }}</td>
+                            <td> 술게임 추천 게시판 </td>
+                            <td>{{ g.date_time }}</td>
+                        </tr>
+                        {% endfor %}
+                        {% for bg in bungae %}
+                        <tr>
+                            <td>{{ bg.bungae_num }}</td>
+                            <td>{{ bg.content }}</td>
+                            <td> 온라인 번개 모임 게시판 </td>
+                            <td>{{ bg.cre_date }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
