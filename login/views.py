@@ -1,8 +1,10 @@
+from email import message
+from pyexpat.errors import messages
 from .models import user
 from django.utils import timezone
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-
+from django.contrib import messages
 
 
 def signup(request):
@@ -30,7 +32,8 @@ def login(request):
         try:
             m = user.objects.get(user_id=user_id, user_pw=user_pw)
         except user.DoesNotExist as e:
-            return HttpResponse('로그인 실패')
+            return render(request, 'login/login.html', messages.warning(request, "아이디와 패스워드를 확인하세요."))
+            
         else:
             request.session["user_id"] = m.user_id
             request.session["nickname"] = m.nickname

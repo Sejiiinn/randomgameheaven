@@ -61,10 +61,12 @@
                             <a href="{% url 'login:logout' %}">
                                 {{ request.session.nickname }} (로그아웃)
                             </a>
-
                         {% else %}
+                          
                             <p><span style="color:white">현재 상태 : Guest</span></p>
                         {% endif %}
+
+                       
                     </div>
                 </div>
             </div>
@@ -103,6 +105,15 @@
                                 <input type="text" placeholder="비밀번호를 입력하세요" name="user_pw">
                                 <span>PW</span>
                             </div>
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <div class="alert alert-primary" role="alert">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
                             <button type="submit" class="site-btn">로그인</button>
                         </form>
                         
