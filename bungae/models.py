@@ -10,7 +10,7 @@ class BungaeBoard(models.Model):
     bungae_num = models.AutoField(primary_key=True)
     User = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
     content = models.TextField(null=True)
-    cre_date = models.TextField(null=True)
+    cre_date = models.DateTimeField(null=True)
 
     class Meta:
         db_table = 'bungaeboard'

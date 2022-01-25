@@ -3,34 +3,36 @@ from django.http import HttpResponse
 from bungae.models import *
 from login.models import user
 import datetime
+from django.contrib import messages
+#from django.utils import timezone
 
 # Create your views here.
 
 def bungae_board(request):
 
-    board = BungaeBoard.objects.all()
+    board = BungaeBoard.objects.all().order_by('-cre_date')
 
+    if request.method == 'POST':
+          get_id = request.session.get('user_id')
 
-    get_id = request.session.get('user_id')
+          if get_id:
+            #now = timezone.now()
+            #nowDatetime = now.strftime('%Y년 %m월 %d일 %H:%M:%S')
 
-    nickname_list = []
-
-    for nickname in board:
-        nickname_list.append(user.objects.get(user_id = str(get_id)).nickname)
-
-    if get_id:
-        if request.method == 'POST':
             now = datetime.datetime.now()
-            nowDatetime = now.strftime('%Y-%m-%d %H:%M:%S')
-
             input_text = str(request.POST.get('input_text'))
             user_id = str(get_id)
-            nickname_list = []
 
-            board = BungaeBoard(User = user.objects.get(user_id = user_id),content = input_text, cre_date = nowDatetime)
+            board = BungaeBoard(User = user.objects.get(user_id = user_id),content = input_text, cre_date = now)
             board.save()
-            return render(request, 'bungae/bungae_board.html', {'board': board})
-    else:
-        redirect("bungae : bungae")
+
+            return HttpResponse('게시글이 작성 되었습니다.')
+
+          else:
+              return HttpResponse('로그인 후 이용해주세요.')
 
     return render(request, 'bungae/bungae_board.html', {'board': board})
+
+
+
+
