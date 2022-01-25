@@ -3,8 +3,11 @@ from django.http import HttpResponse
 
 from .models import Main
 def main(request):
-    prd = request.GET.get('prd')
-    maindata = Main.objects.all()
+    search = request.GET.get('search')
+    if search:
+        maindata = Main.objects.filter(game_title__contains = search)
+    else:
+        maindata = Main.objects.all()
 
     return render(
         request, 'board/main.html', 

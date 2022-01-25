@@ -102,6 +102,11 @@
     </style>
     
     <div style="width:60%;height:0 auto;margin:0 auto;">
+        <form action="" method="GET" style="background:white;width:350px">
+            <input type="text" name="search" id="search-input" placeholder="키워드를 입력하세요." style="width:300px;border:0">
+            <button type="submit" style="float:right;border:0;background:#dc3545;color:white;width50px">검색</button>
+        </form>
+        <br>
         {% for item in data %}
         <div class="contentbox">
             <div style="float:left">
