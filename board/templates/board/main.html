@@ -101,11 +101,18 @@
         }
     </style>
     
-    <div style="width:70%;height:0 auto;margin:0 auto;">
+    <div style="width:60%;height:0 auto;margin:0 auto;">
         {% for item in data %}
         <div class="contentbox">
-            <img src="/static/img/anime/review-1.jpg" style="width:80;height:80px;float:left">
-            <p class="title"><b>{{item.game_title}}</b></p> <p class="title">{{item.game_content}}</p>
+            <div style="float:left">
+                <img src="{{item.game_img}}" onerror="this.src='/static/img/anime/review-1.jpg'" style="width:80px;height:80px;float:left">
+                <p class="title"><b>{{item.game_title}}</b></p> <p class="title">{{item.game_content}}</p>
+            </div>
+            <div style="float:right" class="anime__details__form">
+                <form action="#">
+                    <button type="submit" style="float:right"><i class="fa fa-location-arrow"></i>시작하기</button>
+                </form>
+            </div>
         </div>
         {% endfor %}
     </div>
