@@ -32,8 +32,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'login',
     'main',
     'board',
+    'bungae',
+    'write',
+    'mypage',
+    'recommendation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -91,7 +96,10 @@ DATABASES = {
     }
 }
 
-DATABASE_ROUTERS = ['main.router.DBRouter']
+DATABASE_ROUTERS = [
+    'main.router.DBRouter',
+    'mypage.router.MypageDBRouter',
+    ]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
