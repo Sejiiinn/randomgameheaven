@@ -27,7 +27,7 @@ def chage_pw(request):
     else:
         change_pw_form = ChangePasswordForm(request.user)
     
-    return render(request, )
+    return render(request, 'mypage/change_pw.html', {'change_pw_form':change_pw_form})
     
 def my_board(request):
     board_list = board.objects.all()

@@ -98,43 +98,64 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>비밀번호 변경하기</h3>
-                        <button type='button' class='site-btn' data-toggle="modal" data-target="#chpw">
+                        <button type='button' class='site-btn' onclick="location.href='change_pw/'">
                             변경하기
                         </button>
                     </div>
                     <!-- The Modal -->
-                    <div class="modal fade" id="chpw">
-                        <div class="modal-dialog">
+                    <div class="modal fade" id="chpw" tabindex="-1" role="dialog" aria-labelledby="mypagemodal" aria-hidden="true">
+                        <div class="modal-dialog" role='document'>
                             <div class="modal-content">
                                 <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title">비밀번호 변경하기</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <div class="modal-header text-center">
+                                    <h4 class="modal-title w-100 font-weight-bold">비밀번호 변경하기</h4>
+                                    <button type="button" class="close" data-dismiss="modal" >&times;</button>
                                 </div>
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                    <div class="input__item">
-                                        <input type="password" placeholder="현재 비밀번호">
-                                        <input type="password" placeholder="변경할 비밀번호">
-                                        <input type="password" placeholder="비밀번호 재확인" name="user_pw">
+                                    <form name="chg_pw_form" action="">
+                                        <div class="form-group">
+                                            <label for="userid">아이디 </label>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                                <div class="modal-footer d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-danger" data-dismiss="modal">변경하기</button>
                                   </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
                 <div class="col-lg-6">
                     <div class="nickname__form">
                         <h3>닉네임 변경하기</h3>
-                        <form action="#">
-                            <div class="input__item">
-                                <input type="text" placeholder="변경할 닉네임">
+                        <!-- <form action="#"> -->
+                            <button type='button' class='site-btn' data-toggle="modal" data-target="#chnm">
+                                변경하기
+                            </button>
+                        <!-- </form> -->
+                    </div>
+                    <!-- The Modal -->
+                    <div class="modal fade" id="chnm" tabindex="-1" role="dialog" aria-labelledby="mypagemodal" aria-hidden="true">
+                        <div class="modal-dialog" role='document'>
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header text-center">
+                                    <h4 class="modal-title w-100 font-weight-bold">닉네임 변경하기</h4>
+                                    <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body mx-3">
+                                    <div class="md-form mb-5">
+                                        <input type="text" id='default-nickname' class='form-control validate'>
+                                        <label data-error="wrong" data-success="right" for="default-nickname">변경할 닉네임</label>
+                                    </div>
+                                <div class="modal-footer d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-danger" data-dismiss="modal">변경하기</button>
+                                  </div>
                             </div>
-                            <button type="submit" class="site-btn">변경하기</button>
-                        </form>
+                        </div>
                     </div>
             </div>
         </div>    

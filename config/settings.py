@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'main',
     'board',
     'bungae',
-    'write',
     'mypage',
     'recommendation',
     'django.contrib.admin',
