@@ -131,7 +131,8 @@
                     <div class="nickname__form">
                         <h3>닉네임 변경하기</h3>
                         <!-- <form action="#"> -->
-                            <button type='button' class='site-btn' data-toggle="modal" data-target="#chnm">
+                            <button type='button' class='site-btn' onclick="location.href='change_nm/'">
+                            <!-- <button type='button' class='site-btn' data-toggle="modal" data-target="#chnm"> -->
                                 변경하기
                             </button>
                         <!-- </form> -->
@@ -174,12 +175,21 @@
                     </tr>
                     </thead>
                     <tbody>
-                        {% for data in board %}
+                        {% csrf_token %}
+                        {% for g in game %}
                         <tr>
-                            <td>{{ data.bungae_num }}</td>
-                            <td>{{ data.title }}</td>
-                            <td>{{ data.post_title }}</td>
-                            <td>{{ data.cre_date }}</td>
+                            <td>{{ g.user_game_id }}</td>
+                            <td>{{ g.user_game_title }}</td>
+                            <td> 술게임 추천 게시판 </td>
+                            <td>{{ g.date_time }}</td>
+                        </tr>
+                        {% endfor %}
+                        {% for bg in bungae %}
+                        <tr>
+                            <td>{{ bg.bungae_num }}</td>
+                            <td>{{ bg.content }}</td>
+                            <td> 온라인 번개 모임 게시판 </td>
+                            <td>{{ bg.cre_date }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
