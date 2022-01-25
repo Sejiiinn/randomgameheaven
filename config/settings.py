@@ -98,6 +98,7 @@ DATABASES = {
 DATABASE_ROUTERS = [
     'main.router.DBRouter',
     'mypage.router.MypageDBRouter',
+    'bungae.router.BungaeDBRouter',
     ]
 
 # Password validation

@@ -6,14 +6,15 @@ import datetime
 
 
 def bungae_board(request):
+    now = datetime.datetime.now()
+    nowDatetime = now.strftime('%Y-%m-%d %H:%M:%S')
     if request.method == 'POST':
         input_text = request.POST.get('input_text')
 
         result = '%s' % (input_text)
-        now = datetime.datetime.now()
-        nowDatetime = now.strftime('%Y-%m-%d %H:%M:%S')
+        nickname = str(request.session["nickname"])
         return render(request,
                       'bungae/bungae_board.html', 
-                      {'result': result, 'user_id':request.session["user_id"], 'nowDatetime': nowDatetime})
+                      {'result': result, 'nickname':nickname, 'nowDatetime': nowDatetime})
 
     return render(request, 'bungae/bungae_board.html')
