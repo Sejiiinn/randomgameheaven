@@ -74,7 +74,7 @@
     <section class="login spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <!-- <div class="col-lg-6"> -->
                     <div class="nickname__form">
                         <h3>비밀번호 변경하기</h3>
                         <form action="" method="post">
@@ -89,13 +89,44 @@
                             <input type="password" placeholder="비밀번호 재확인" name="new2_pw"><br>
                         </div>
                         <button type="submit" class="btn btn-danger">변경하기</button>
+                        {% if messages %}
+                        <div>
+                            {% for message in messages %}
+                            {{ message.tag }}! {{ message.message }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
                     </form>
-                    </div>
                 </div>
-                </div>
+                <!-- </div> -->
             </div>
         </div>
     </div>
+    <!-- The Modal -->
+    <div id='chpw' class="modal fade" id="chpw" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+            <h4 class="modal-title">비밀번호 변경</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+            <p>비밀번호를 변경하시겠습니까?</p>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+            <button onclick="change_password()" type="button" class="btn btn-danger">변경</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+</section>
 
 <!-- Footer Section Begin -->
 <footer class="footer">
@@ -139,7 +170,11 @@
 <script src="{% static 'js/jquery.slicknav.js' %}"></script>
 <script src="{% static 'js/owl.carousel.min.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
-
+<script type="text/javascript">
+    function change_password() {
+        location.replace('mypage:mypage_main')
+    }
+</script>
 
 
 </body>
