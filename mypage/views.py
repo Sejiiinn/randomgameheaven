@@ -6,6 +6,7 @@ from bungae.models import *
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.urls import reverse
 
 from bungae.models import BungaeBoard
 
@@ -69,10 +70,15 @@ def change_nm(request):
         if usernickname != new_nickname:
             user_info = User.objects.get(user_id=userid)
             user_info.nickname = new_nickname
+            request.session['nickname'] = new_nickname
             user_info.save()
-            messages.info(request, '닉네임이 변경되었습니다.')
+            # messages.info(request, '닉네임이 변경되었습니다.')
             return redirect('mypage:mypage_main')
+        elif new_nickname == '':
+            messages.info(request, '다시 입력하세요.')
+            return redirect(reverse('mypage:change_nm'))
         else:
             messages.info(request, '다시 입력하세요.')
-            return redirect(request, 'mypage:change_nm')
+            return redirect(reverse('mypage:change_nm'))
+        
     return render(request, 'mypage/change_nm.html')

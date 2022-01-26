@@ -1891,6 +1891,22 @@ ol {
 	display:block;
 }
 
+.ch-bt:hover{
+	color: #FFFFFF;
+	background-color: #DB0000;
+}
+
+.chpw__form .input__item{
+	margin: 0 auto;
+}
+
+.msg-bt {
+	position: relative;
+	width: 370px;
+	margin-bottom: 20px;
+	margin: 0 auto;
+}
+
 /*---------------------
   Login
 -----------------------*/
