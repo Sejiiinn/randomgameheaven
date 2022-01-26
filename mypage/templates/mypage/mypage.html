@@ -176,12 +176,12 @@
                     </thead>
                     <tbody>
                         {% csrf_token %}
-                        {% for g in game %}
+                        {% for game in usergame %}
                         <tr>
-                            <td>{{ g.user_game_id }}</td>
-                            <td>{{ g.user_game_title }}</td>
+                            <td>{{ game.user_game_id }}</td>
+                            <td>{{ game.user_game_title }}</td>
                             <td> 술게임 추천 게시판 </td>
-                            <td>{{ g.date_time }}</td>
+                            <td>{{ game.date_time }}</td>
                         </tr>
                         {% endfor %}
                         {% for bg in bungae %}
