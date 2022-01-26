@@ -1,12 +1,12 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400);
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:400); */
 
-body{
+/* body{
   -ms-transform: scale(1.5);
   -moz-transform: scale(1.5);
   -webkit-transform: scale(1.5);
   transform: scale(1.5);
   background: #190250;
-}
+} */
 ::selection{
   background: none;
 }
@@ -14,12 +14,13 @@ body{
 	background: none;
 }
 
+
 .button {
-  width: auto; height: 50px;
-  min-width:90px;
+  width: auto; height: 100px;
+  min-width:1000px;
   display: inline-block;
   padding: 0 10px;
-  margin-left: -60px;
+  margin-left: -500px;
   margin-bottom: 50px;
   
   background:#FFB74D;
@@ -33,6 +34,8 @@ body{
   font-weight: 400;
   color: #EF6C00;
   text-align: center;
+  line-height: 160px;
+  
   
   overflow: hidden;
   transition: width .4s;
@@ -42,10 +45,10 @@ body{
   background: #FFA726;
 }
 .button:active{
-  -ms-transform: scale(1.01);
-  -moz-transform: scale(1.01);
-  -webkit-transform: scale(1.01);
-  transform: scale(1.01);
+  -ms-transform: scale(1.10);
+  -moz-transform: scale(1.10);
+  -webkit-transform: scale(1.10);
+  transform: scale(1.10);
   box-shadow: 0 3px 7px rgba(0,0,0,.7);
   background: #FF9800;
 }
@@ -60,6 +63,30 @@ body{
   position: relative;
   transition: top .15s;
   top: -15px;
-  line-height: 50px;
+  line-height: 140px;
+}
+#num2 {
+
+    line-height: 100px;
+  }
+#num3 {
+
+    line-height: 100px;
+}
+#num4 {
+ 
+    line-height: 100px;
+}
+#num5 {
+ 
+    line-height: 100px;
+}
+#num6 {
+
+    line-height: 100px;
+}
+#num7 {
+
+    line-height: 100px;
 }
 

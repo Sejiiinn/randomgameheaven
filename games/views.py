@@ -9,6 +9,11 @@ app_name = 'games'
 def hunmin(request):
     return render(request, 'games/hunmin.html', {})
 
+
+
+def randomgame(request):
+    return render(request, 'games/randomgame.html')
+    
 def roulette(request):
     return render(request, 'games/roulette.html')
 
