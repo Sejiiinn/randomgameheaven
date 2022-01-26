@@ -1716,7 +1716,7 @@ ol {
   Mypage
 -----------------------*/
 .myboard {
-	padding-top: 50px;
+	padding-top: 130px;
 	padding-bottom: 0px;
 }
 .myboard h3 {
@@ -1724,6 +1724,14 @@ ol {
 	font-weight: 700;
 	font-family: "Oswald", sans-serif;
 	margin-bottom: 30px;
+}
+.myboard p {
+	color: #ffffff;
+	font-size: 20px;
+}
+
+.t_hover tr:hover {
+	background-color:#0e115e
 }
 .profile {
 	padding-top: 80px;
@@ -1826,6 +1834,16 @@ ol {
 	color: #ffffff;
 }
 
+.modal-body input__item {
+	margin-bottom: 20px;
+}
+
+caption { 
+	display: table-caption;
+	text-align: left;
+	color: #ffffff;
+	font-size: 20px;
+  }
 
 /*---------------------
   Login
