@@ -2,67 +2,87 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from bungae.models import *
 from login.models import user
+#from mypage.models import board
 import datetime
+from django.core.paginator import Paginator
 
 
 #Create your views here.
 
 def bungae_board(request):
 
+    now_page = request.GET.get('page', 1)
+
     board = BungaeBoard.objects.all().order_by('-cre_date')
 
+    p = Paginator(board, 5)
+
+    now_page = int(now_page) # now_page int형 변환 
+
+    info = p.page(now_page)
+
+    start_page = (now_page - 1) // 10 * 10 + 1
+    end_page = start_page + 9
+
+    if end_page > p.num_pages:
+        end_page = p.num_pages
+    
+    
     if request.method == 'POST':
-          get_id = request.session.get('user_id')
-
-          if get_id:
+        get_id = request.session.get('user_id')
+        
+        if get_id:
             #nowDatetime = now.strftime('%Y년 %m월 %d일 %H:%M:%S')
-
             now = datetime.datetime.now()
             input_text = str(request.POST.get('input_text'))
             user_id = str(get_id)
-
+            
             board = BungaeBoard(User = user.objects.get(user_id = user_id),
-                                content = input_text,
-                                cre_date = now,
+                                      content = input_text,
+                                        cre_date = now,
                                 title = '제목없음',
                                 post_title = '온라인 번개 모임 게시판')
+            
             board.save()
 
             return redirect ('bungae:bungae')
 
-          else:
-              return HttpResponse('로그인 후 이용해주세요.')
+        else:
+            return HttpResponse('로그인 후 이용해주세요.')
+    
 
-    return render(request, 'bungae/bungae_board.html', {'board': board})
+
+    return render(request, 'bungae/bungae_board.html', {'board': info,
+                                                        'page_range' : range(start_page, end_page + 1)})
+
 
 
 # def bungae_board(request):
-    
-#     board2 = board.objects.all().order_by('-cre_date')
+#       board2 = board.objects.all().order_by('-cre_date')
+      
+#       if request.method == 'POST':
+#             get_id = request.session.get('user_id')
+            
+#             if get_id:
+#                   #nowDatetime = now.strftime('%Y년 %m월 %d일 %H:%M:%S')
+#                   now = datetime.datetime.now()
+#                   input_text = str(request.POST.get('input_text'))
+#                   userid = str(get_id)
 
-#     if request.method == 'POST':
-#           get_id = request.session.get('user_id')
+#                   board2 = board(user_id = userid,
+#                                  title = '제목없음',
+#                                  content = input_text,
+#                                  cre_date = now,
+#                                  board_type = '온라인 번개 모임 게시판')
 
-#           if get_id:
-#             #nowDatetime = now.strftime('%Y년 %m월 %d일 %H:%M:%S')
+#                   board2.save()
+                  
+#                   return redirect ('bungae:bungae')
+              
+#             else:
+#                   return HttpResponse('로그인 후 이용해주세요.')
 
-#             now = datetime.datetime.now()
-#             input_text = str(request.POST.get('input_text'))
-#             userid = str(get_id)
-#             it = user.objects.get(user_id = userid)
-#             board2 = board(User = it,
-#                                 title = '제목없음',
-#                                 content = input_text,
-#                                 cre_date = now,
-#                                 board_type = '온라인 번개 모임 게시판')
-#             board2.save()
-
-#             return redirect ('bungae:bungae')
-
-#           else:
-#               return HttpResponse('로그인 후 이용해주세요.')
-
-#     return render(request, 'bungae/bungae_board.html', {'board': board2})
+#       return render(request, 'bungae/bungae_board.html', {'board': board2})
 
       
 

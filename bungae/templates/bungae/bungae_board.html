@@ -89,6 +89,19 @@
                                 {% endfor %}
                             
                         </div>
+
+                        <div style='text-align:center;'>
+                            <ul class='pagination'>
+                            {% for i in page_range %}
+                                <li>
+                                <a href='{% url "bungae:bungae" %}?page={{ i }}'>
+                                {{ i }}
+                                </a>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+
                         <div class="anime__details__form">
                             <div class="section-title">
                                 <h5>게시글 작성</h5>
