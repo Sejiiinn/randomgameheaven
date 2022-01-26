@@ -12,3 +12,6 @@ def hunmin(request):
 
 def roulette(request):
     return render(request, 'games/roulette.html')
+
+def initialquiz(request):
+    return render(request, 'games/intialquiz.html')

@@ -7,4 +7,5 @@ urlpatterns = [
     # path('roulette/', views.roulette, name = 'roulette'),
     path('hunmin/', views.hunmin, name = 'hunmin'),
     path('roulette/', views.roulette, name = 'roulette'),
+    path('initialquiz/', views.initialquiz, name = 'initialquiz'),
 ]
