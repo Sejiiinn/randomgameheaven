@@ -1,23 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="zxx">
+
+    {% load static %}
+
 <body>
+<div class="container">
+    <div class="row">
+        <div class="md-col-12">
+            <div class="row">
+                <div class="md-col-6">
+                    <div class="row"><input type="button" value="spin" style="float:left;" id="spin" /></div>
+                    <div class="row">
+                        <ul>
+                            <li>A </li>
+                            <li>A </li>
+                            <li>B </li>
+                            <li>C </li>
+                            <li>D </li>
+                            <li>E </li>
+                            <li>F </li>
+                            <li>G </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="md-col-6"><canvas id="canvas" width="500" height="500"></canvas></div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3;"></canvas>
-
-<script>
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-
-ctx.fillStyle = "#FF0000";
-ctx.fillRect(0, 0, 100, 100);
-
-ctx.beginPath()
-ctx.arc(70, 70, 50, 0, 2*Math.PI, false);
-ctx.fillStyle = "green";
-ctx.fill();
-
-
-</script>
+<script src="{% static 'js/roulette.js' %}"></script>
 
 </body>
 </html>

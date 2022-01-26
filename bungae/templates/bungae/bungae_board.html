@@ -77,21 +77,39 @@
                         <div class="anime__details__review">
                             <div class="section-title">
                                 <h5>온라인 번개 모임 게시판</h5>
+                                
                             </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__text">
-                                    <h6>닉네임 입력 - <span>게시글 등록 시간</span></h6>
-                                    <p>게시글 입력 부분</p>
+                                {% for data in board %}
+                                <div class="anime__review__item">
+                                    <div class="anime__review__item__text">
+                                        <h6>{{data.user.nickname}} - <span>{{data.cre_date}}</span></h6>
+                                        <p>{{data.content}}</p>
+                                    </div>
+                                    
                                 </div>
-                            </div>
+                                {% endfor %}
                             
                         </div>
+
+                        <div class="product__pagination">
+                            <ul class='pagination'>
+                            {% for i in page_range %}
+                                <li>
+                                <a href='{% url "bungae:bungae" %}?page={{ i }}'>
+                                {{ i }}
+                                </a>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+
                         <div class="anime__details__form">
                             <div class="section-title">
                                 <h5>게시글 작성</h5>
                             </div>
-                            <form action="#">
-                                <textarea placeholder="입력하세요"></textarea>
+                            <form action="" method = "post">
+                                <textarea placeholder="입력하세요" input type = "text" name = "input_text"></textarea>
+                                {% csrf_token %}
                                 <button type="submit"><i class="fa fa-location-arrow"></i> 등록</button>
                             </form>
                         </div>

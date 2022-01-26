@@ -1,20 +1,32 @@
+from operator import mod
+from pyexpat import model
 from django.db import models
-from datetime import datetime
-from login.models import user
+import datetime
+#from login.models import user
 
 # Create your models here.
 
 
-
-class Board(models.Model):
-    board_num = models.IntegerField(primary_key=True, max_length=10, unique=True)
-    user_id = models.ForeignKey(user, on_delete=models.SET_NULL, null=True)
-    title = models.TextField()
-    content = models.TextField()
-    cre_date = models.TimeField(default=datetime.today())
-    board_type = models.CharField(max_length=50)
+class User(models.Model):
+    user_id = models.CharField(primary_key=True, max_length=50, unique=True)
+    user_pw = models.CharField(max_length=50)
+    nickname = models.CharField(max_length=50)
 
     class Meta:
-        db_table = 'board'
+        db_table = 'user'
         app_label = 'bungae'
-        managed = True
+        managed = False
+
+
+class BungaeBoard(models.Model):
+    bungae_num = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    content = models.TextField(null=True)
+    cre_date = models.DateTimeField(null=True)
+    title = models.CharField(max_length = 50, null = True)
+    post_title = models.CharField(max_length = 50, null = True)
+
+    class Meta:
+        db_table = 'bungaeboard'
+        #app_label = 'bungae'
+        managed = False

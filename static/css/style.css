@@ -1826,6 +1826,21 @@ ol {
 	color: #ffffff;
 }
 
+.modal-body input__item {
+	margin-bottom: 20px;
+}
+
+caption { 
+	display: table-caption;
+	text-align: left;
+	color: #ffffff;
+	font-size: 20px;
+  }
+
+.myboard p {
+	color: #ffffff;
+	font-size: 20px;
+}
 
 /*---------------------
   Login
