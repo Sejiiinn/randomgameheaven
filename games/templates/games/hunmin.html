@@ -1,0 +1,59 @@
+
+{% extends 'games/layout.html' %}
+
+{% block content %}
+
+<style>
+    body{
+        width:100%;
+        height:100%;
+        text-align:center;
+    }
+    .hmBox{
+        width:300px;
+        height:300px;
+        background:rgba(255, 214, 127, 0.836);
+        display:inline-block;
+        border-radius:20px;
+    }
+    .reroll{
+        width:300px;
+        height:100px;
+        background:rgb(31, 124, 131);
+        display:inline-block;
+        border-radius:20px;
+        margin:30px;
+    }
+</style>
+
+<body>
+    <div style="margin-top:100px">
+        <div class="hmBox">
+            <h1 id="hm1" style="margin-top:100px"></h1>
+        </div>
+        <div class="hmBox">
+            <h1 id="hm2" style="margin-top:100px"></h1>
+        </div>
+    </div>
+    <div id="reroll" class="reroll">
+        <h2 type="button" style="margin-top:25px;color:white">굴리기</h2>
+    </div>
+</body>
+
+
+
+<script>
+
+let hangul = ["ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"];
+
+document.getElementById("reroll").addEventListener('click',change);
+function change(){
+    let t1 = document.getElementById('hm1');
+    let t2 = document.getElementById('hm2');
+    t1.innerText = hangul[Math.floor(Math.random() * 13)];
+    t2.innerText = hangul[Math.floor(Math.random() * 13)];
+}
+
+</script>
+
+{% endblock %}
