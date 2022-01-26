@@ -48,7 +48,10 @@ def change_pw(request):
             # messages.info(request, "비밀번호가 변경되었습니다.")
             return redirect('mypage:mypage_main')
         elif new_pw != new2_pw:
-            messages.info(request, '비밀번호가 다릅니다.')
+            messages.info(request, '변경할 비밀번호가 서로 다릅니다.')
+            return redirect('mypage:change_pw')
+        elif userpw != old_pw:
+            messages.info(request, '현재 비밀번호가 다릅니다.')
             return redirect('mypage:change_pw')
         else:
             messages.info(request, '비밀번호를 입력하세요.')
