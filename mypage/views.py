@@ -24,7 +24,8 @@ def mypage_main(request):
         return render(request,
                       'mypage/mypage.html',
                       {'bungae':bungae,
-                       'usergame':user_game
+                       'usergame':user_game,
+                       'nickname':nickname
                        })
     else:
         return redirect('login:login')
@@ -58,7 +59,7 @@ def change_nm(request):
         
         if usernickname != new_nickname:
             user_info = User.objects.get(user_id=userid)
-            user_info.nickname = usernickname
+            user_info.nickname = new_nickname
             user_info.save()
             return HttpResponse('닉네임이 변경되었습니다.')
         else:

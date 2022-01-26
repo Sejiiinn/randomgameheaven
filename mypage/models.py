@@ -13,18 +13,18 @@ class User(models.Model):
         app_label = 'mypage'
         managed = False
     
-class board(models.Model):
-    board_num = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.TextField(null = True)
-    content = models.TextField(null = True)
-    cre_date = models.DateTimeField(null = True)
-    board_type = models.CharField(max_length=50, null = True)
+# class board(models.Model):
+#     board_num = models.AutoField(primary_key=True)
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     title = models.TextField(null = True)
+#     content = models.TextField(null = True)
+#     cre_date = models.DateTimeField(null = True)
+#     board_type = models.CharField(max_length=50, null = True)
 
-    class Meta:
-        db_table = 'board'
-        app_label = 'mypage'
-        managed = False
+#     class Meta:
+#         db_table = 'board'
+#         app_label = 'mypage'
+#         managed = False
 
         
 class Usergame(models.Model):
