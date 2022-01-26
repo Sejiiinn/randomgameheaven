@@ -18,7 +18,7 @@ def mypage_main(request):
         user_pw = user_info.user_pw
         nickname = user_info.nickname
         
-        bungae = BungaeBoard.objects.filter(User=user_info.user_id)
+        bungae = BungaeBoard.objects.filter(user=user_info.user_id) # 변수명 User -> user로 변경
         user_game = Usergame.objects.filter(user=user_info.user_id)
         
         return render(request,
