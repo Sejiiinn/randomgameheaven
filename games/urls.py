@@ -8,6 +8,6 @@ urlpatterns = [
     path('hunmin/', views.hunmin, name = 'hunmin'),
     path('randomgame/', views.randomgame, name = 'randomgame'),
     path('roulette/', views.roulette, name = 'roulette'),
-    path('initialquiz/', views.initialquiz, name = 'initialquiz'),
+    path('moviequiz/', views.moviequiz, name = 'moviequiz'),
     path('rsp/', views.rsp, name = 'rsp'),
 ]

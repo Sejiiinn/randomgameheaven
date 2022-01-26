@@ -17,8 +17,8 @@ def randomgame(request):
 def roulette(request):
     return render(request, 'games/roulette.html')
 
-def initialquiz(request):
-    return render(request, 'games/intialquiz.html')
+def moviequiz(request):
+    return render(request, 'games/moviequiz.html')
 
 def rsp(request):
     return render(request, 'games/rsp.html')
