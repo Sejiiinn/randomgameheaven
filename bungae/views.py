@@ -6,6 +6,7 @@ import datetime
 from django.core.paginator import Paginator
 
 
+<<<<<<< HEAD
 #Create your views here.
 
 def bungae_board(request):
@@ -53,3 +54,13 @@ def bungae_board(request):
 
 
 
+=======
+
+def bungae_board(request):
+    if request.method == 'POST':
+        a = request.POST.get('input_text')
+
+        result = '%s' % (a)
+        return render(request, 'bungae/bungae_board.html', {'result':result})
+    return render(request, 'bungae/bungae_board.html')
+>>>>>>> origin/bungae_branch
