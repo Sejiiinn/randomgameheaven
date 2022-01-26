@@ -1,78 +1,174 @@
-$(".button").css("width", ($("#num1").width()+30));
-  
-//not a perfect random number function, 
-//just does what I need it to
-//only use for integers 1-10, otherwise LOOP CAN'T BREAK 
-function randInt(min, max){
-  var x = Math.floor((Math.random()*10)+1);
-  while ((x<min) || (x>max)) {
-    x = Math.floor((Math.random()*10)+1);
+var foods = [
+    {
+      name:'A',
+      prop: 1
+    }, 
+    { 
+      name:'B',
+      prop: 1
+    },{
+      name:'C',
+      prop: 1
+    },{
+      name: 'D',
+      prop: 1
+    },{
+      name: 'E',
+      prop: 20
+    },{
+      name: 'F',
+      prop: 1
+    },{
+      name: 'G',
+      prop: 5
+    }, 
+  // {
+  //     name: 'H',
+  //     prop: 5
+  //   },{
+  //     name: 'I',
+  //     prop: 5
+  //   }, {
+  //     name: 'J',
+  //     prop: 3
+  //   }, {
+  //     name: 'K',
+  //     prop: 2
+  //   }
+  ];
+var options = [];
+for(var i in foods){
+  for(var j = 0; j < foods[i].prop; j++){
+    options.push(foods[i].name);
   }
-  return x;
+}
+options = _.shuffle(options);
+// var options = ["$100", "$10", "$25", "$250", "$30", "$1000", "$1", "$200", "$45", "$500", "$5", "$20", "Lose", "$1000000", "Lose", "$350", "$5", "$99"];
+
+var startAngle = 0;
+var arc = Math.PI / (options.length / 2);
+var spinTimeout = null;
+
+var spinArcStart = 10;
+var spinTime = 0;
+var spinTimeTotal = 0;
+
+var ctx;
+
+document.getElementById("spin").addEventListener("click", spin);
+
+function byte2Hex(n) {
+  var nybHexString = "0123456789ABCDEF";
+  return String(nybHexString.substr((n >> 4) & 0x0F,1)) + nybHexString.substr(n & 0x0F,1);
 }
 
-function clearOptions() {
-  $(".option").hide();
-  $(".option").css("top", "-50px");
+function RGB2Color(r,g,b) {
+	return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
 }
 
-var scrolledIDs = [];
-
-//scrolls element after given delay in milliseconds 
-function scroll(delay, quitArg){
-    var IDNum = randInt(2,7);  
-    //reassign randNum if already scrolled
-    while (!(scrolledIDs.indexOf(IDNum) === -1)) {
-      IDNum = randInt(2,7);
-    }
-    
-    var id = "#num"+IDNum.toString();
-    var width = ($(id).width()+30)+"px";
-    //scroll unless on final option
-    $(id).delay(delay).show(0, function(){
-     
-      $(".button").css("width", width);
-      
-      if (quitArg) {
-        $(id).css("top", "0");
-      } else {
-        $(id).css("top", "50px").delay(200).hide(0, function(){
-          $(id).css("top", "-50px");
-        });
-      }
-
-    });
-  //add ID to list of scrolled IDs
-  scrolledIDs.push(IDNum);
-}
-
-$(".button").on("mouseenter", function() {
+function getColor(item, maxitem) {
+  var phase = 0;
+  var center = 128;
+  var width = 127;
+  var frequency = Math.PI*2/maxitem;
   
-  $("#num1").css("top", "50px").delay(150).hide(0);
+  red   = Math.sin(frequency*item+2+phase) * width + center;
+  green = Math.sin(frequency*item+0+phase) * width + center;
+  blue  = Math.sin(frequency*item+4+phase) * width + center;
   
-  var scrollDelay = -40;
-  //i =  num of scrolling options + final
-  //don't let i >= max parameter for randInt function, else endless loop
-  for (i=0;i<4;i++){
-    scrollDelay=scrollDelay+200;
-    if (i >= 3){
-      scroll(scrollDelay, 1);
-      console.log("final");
-    } else{
-      scroll(scrollDelay);
-      console.log("onedown");
-    }
-  } 
-  scrolledIDs = [];
-});
+  return RGB2Color(red,green,blue);
+}
 
-//TO-DO: make final option scroll away when mouseleave
-$(".button").on("mouseleave", function() {
-  clearOptions();
-  //scroll default option from top
-  $("#num1").css("top", "-50px");
-  $("#num1").show(0, function(){
-     $("#num1").css("top", "-15px");
-  });
-  $(".button").css("width", ($("#num1").width()+30));
-});
+function drawRouletteWheel() {
+  var canvas = document.getElementById("canvas");
+  if (canvas.getContext) {
+    var outsideRadius = 200;
+    var textRadius = 160;
+    var insideRadius = 125;
+
+    ctx = canvas.getContext("2d");
+    ctx.clearRect(0,0,500,500);
+
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
+
+    ctx.font = 'bold 12px Helvetica, Arial';
+
+    for(var i = 0; i < options.length; i++) {
+      var angle = startAngle + i * arc;
+      //ctx.fillStyle = colors[i];
+      ctx.fillStyle = getColor(i, options.length);
+
+      ctx.beginPath();
+      ctx.arc(250, 250, outsideRadius, angle, angle + arc, false);
+      ctx.arc(250, 250, insideRadius, angle + arc, angle, true);
+      ctx.stroke();
+      ctx.fill();
+
+      ctx.save();
+      ctx.shadowOffsetX = -1;
+      ctx.shadowOffsetY = -1;
+      ctx.shadowBlur    = 0;
+      ctx.shadowColor   = "rgb(220,220,220)";
+      ctx.fillStyle = "black";
+      ctx.translate(250 + Math.cos(angle + arc / 2) * textRadius, 
+                    250 + Math.sin(angle + arc / 2) * textRadius);
+      ctx.rotate(angle + arc / 2 + Math.PI / 2);
+      var text = options[i];
+      ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+      ctx.restore();
+    } 
+
+    //Arrow
+    ctx.fillStyle = "black";
+    ctx.beginPath();
+    ctx.moveTo(250 - 4, 250 - (outsideRadius + 5));
+    ctx.lineTo(250 + 4, 250 - (outsideRadius + 5));
+    ctx.lineTo(250 + 4, 250 - (outsideRadius - 5));
+    ctx.lineTo(250 + 9, 250 - (outsideRadius - 5));
+    ctx.lineTo(250 + 0, 250 - (outsideRadius - 13));
+    ctx.lineTo(250 - 9, 250 - (outsideRadius - 5));
+    ctx.lineTo(250 - 4, 250 - (outsideRadius - 5));
+    ctx.lineTo(250 - 4, 250 - (outsideRadius + 5));
+    ctx.fill();
+  }
+}
+
+function spin() {
+  spinAngleStart = Math.random() * 10 + 10;
+  spinTime = 0;
+  spinTimeTotal = Math.random() * 3 + 4 * 1000;
+  rotateWheel();
+}
+
+function rotateWheel() {
+  spinTime += 30;
+  if(spinTime >= spinTimeTotal) {
+    stopRotateWheel();
+    return;
+  }
+  var spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
+  startAngle += (spinAngle * Math.PI / 180);
+  drawRouletteWheel();
+  spinTimeout = setTimeout('rotateWheel()', 30);
+}
+
+function stopRotateWheel() {
+  clearTimeout(spinTimeout);
+  var degrees = startAngle * 180 / Math.PI + 90;
+  var arcd = arc * 180 / Math.PI;
+  var index = Math.floor((360 - degrees % 360) / arcd);
+  ctx.save();
+  ctx.font = 'bold 30px Helvetica, Arial';
+  var text = options[index]
+  ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
+  ctx.restore();
+}
+
+function easeOut(t, b, c, d) {
+  var ts = (t/=d)*t;
+  var tc = ts*t;
+  return b+c*(tc + -3*ts + 3*t);
+}
+
+drawRouletteWheel();
