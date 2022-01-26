@@ -1,4 +1,4 @@
-# Create your views here.
+
 from django.shortcuts import render
 from django.db.models import Max, Avg
 from board.models import  Main #/recommendation 모델을 가져와야함
@@ -12,7 +12,7 @@ def get_random_games():
         if restaurant : 
             return restaurant
 
-def index(request):
+def roulette(request):
     restaurant = get_random_games()
     score_avg = Main.objects.filter(restaurant__name=restaurant.name).aggregate(Avg('score'))
 
