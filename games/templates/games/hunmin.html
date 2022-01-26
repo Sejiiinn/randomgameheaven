@@ -3,6 +3,7 @@
 
 {% block content %}
 
+<!-- CSS 부분 -->
 <style>
     body{
         width:100%;
@@ -26,6 +27,8 @@
     }
 </style>
 
+
+<!-- HTML 부분 -->
 <body>
     <div style="margin-top:100px">
         <div class="hmBox">
@@ -42,11 +45,14 @@
 
 
 
+<!-- JavaScript 부분 -->
 <script>
 
 let hangul = ["ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"];
 
+// id가 reroll인 태그를 불러와, click 했을 때 change 라는 함수를 실행
 document.getElementById("reroll").addEventListener('click',change);
+
 function change(){
     let t1 = document.getElementById('hm1');
     let t2 = document.getElementById('hm2');
