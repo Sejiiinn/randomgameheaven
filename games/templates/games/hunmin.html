@@ -1,68 +1,59 @@
 
 {% extends 'games/layout.html' %}
-<!DOCTYPE html>
-<html lang="zxx">
-{% load static %}
 
-<head>
-    <!-- Google Font -->
-    <link href="{% static 'https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap' %}"
-        rel="stylesheet">
-    <link
-        href="{% static 'https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap' %}"
-        rel="stylesheet">
+{% block content %}
 
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/plyr.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
-
-    <!-- bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-</head>
+<style>
+    body{
+        width:100%;
+        height:100%;
+        text-align:center;
+    }
+    .hmBox{
+        width:300px;
+        height:300px;
+        background:rgba(255, 214, 127, 0.836);
+        display:inline-block;
+        border-radius:20px;
+    }
+    .reroll{
+        width:300px;
+        height:100px;
+        background:rgb(31, 124, 131);
+        display:inline-block;
+        border-radius:20px;
+        margin:30px;
+    }
+</style>
 
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
-
-    {% block content %}
-
-
-    
-    {% endblock %}
-
-    <!-- Search model Begin -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch"><i class="icon_close"></i></div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
+    <div style="margin-top:100px">
+        <div class="hmBox">
+            <h1 id="hm1" style="margin-top:100px"></h1>
+        </div>
+        <div class="hmBox">
+            <h1 id="hm2" style="margin-top:100px"></h1>
         </div>
     </div>
-    <!-- Search model end -->
-
-    <!-- Js Plugins -->
-    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/player.js' %}"></script>
-    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
-    <script src="{% static 'js/mixitup.min.js' %}"></script>
-    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
-    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-
-
+    <div id="reroll" class="reroll">
+        <h2 type="button" style="margin-top:25px;color:white">굴리기</h2>
+    </div>
 </body>
 
-</html>
+
+
+<script>
+
+let hangul = ["ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"];
+
+document.getElementById("reroll").addEventListener('click',change);
+function change(){
+    let t1 = document.getElementById('hm1');
+    let t2 = document.getElementById('hm2');
+    t1.innerText = hangul[Math.floor(Math.random() * 13)];
+    t2.innerText = hangul[Math.floor(Math.random() * 13)];
+}
+
+</script>
+
+{% endblock %}
