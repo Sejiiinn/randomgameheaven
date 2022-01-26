@@ -10,21 +10,21 @@ from django.core.paginator import Paginator
 
 def bungae_board(request):
 
-    now_page = request.GET.get('page', 1)
+    page = request.GET.get('page', 1)
 
     board = BungaeBoard.objects.all().order_by('-cre_date')
 
-    p = Paginator(board, 5)
+    paginator = Paginator(board, 5)
 
-    now_page = int(now_page) # now_page int형 변환 
+    page = int(page) # now_page int형 변환 
 
-    info = p.page(now_page)
+    page_obj = paginator.page(page)
 
-    start_page = (now_page - 1) // 10 * 10 + 1
-    end_page = start_page + 9
+    # start_page = (now_page - 1) // 10 * 10 + 1
+    # end_page = start_page + 9
 
-    if end_page > p.num_pages:
-        end_page = p.num_pages
+    # if end_page > p.num_pages:
+    #     end_page = p.num_pages
     
     
     if request.method == 'POST':
@@ -51,8 +51,8 @@ def bungae_board(request):
     
 
 
-    return render(request, 'bungae/bungae_board.html', {'board': info,
-                                                        'page_range' : range(start_page, end_page + 1)})
+    return render(request, 'bungae/bungae_board.html', {'board': page_obj})
+                                                        # 'page_range' : range(start_page, end_page + 1)})
 
 
       
