@@ -1,35 +1,28 @@
 <!DOCTYPE html>
 <html lang="zxx">
-
     {% load static %}
-
+<head>
+	<title>랜선 게임 천국</title>
+	<meta charset="UTF-8" />
+    <link rel="stylesheet" href="{% static 'css/roulette.css' %}" type="text/css">
 <body>
-<div class="container">
-    <div class="row">
-        <div class="md-col-12">
-            <div class="row">
-                <div class="md-col-6">
-                    <div class="row"><input type="button" value="spin" style="float:left;" id="spin" /></div>
-                    <div class="row">
-                        <ul>
-                            <li>A </li>
-                            <li>A </li>
-                            <li>B </li>
-                            <li>C </li>
-                            <li>D </li>
-                            <li>E </li>
-                            <li>F </li>
-                            <li>G </li>
-                        </ul>
+    <div class="container">
+        <div class="row">
+            <div class="md-col-12">
+                <div class="row">
+                    <div class="md-col-6">
+                        <div class="row"><input type="button" value="spin" style="float:left;" id="spin" /></div>
+                        <div class="row">
+     
+                        </div>
                     </div>
+                    <div class="md-col-6"><canvas id="canvas" width="500" height="500"></canvas></div>
                 </div>
-                <div class="md-col-6"><canvas id="canvas" width="500" height="500"></canvas></div>
             </div>
         </div>
     </div>
-</div>
-
-<script src="{% static 'js/roulette.js' %}"></script>
-
 </body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+<script src="{% static 'js/roulette.js' %}" charset="UTF-8"></script>
 </html>
