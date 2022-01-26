@@ -25,4 +25,5 @@ urlpatterns = [
     path('bungae/', include('bungae.urls')),
     path('mypage/', include('mypage.urls')),
     path('recommendation/', include('recommendation.urls')),
+    path('games/', include('games.urls')),
 ]

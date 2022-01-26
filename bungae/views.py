@@ -47,9 +47,3 @@ def bungae_board(request):
 
     return render(request, 'bungae/bungae_board.html', {'board': page_obj})
                                                         # 'page_range' : range(start_page, end_page + 1)})
-
-
-      
-
-
-
