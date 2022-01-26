@@ -78,6 +78,7 @@
                     <div class="nickname__form">
                         <h3>닉네임 변경하기</h3>
                         <form action="" method="post">
+                            {% csrf_token %}
                         <div class="input__item"> 
                             <input type="password" placeholder="변경할 닉네임" name="new_nm"><br>
                         </div>

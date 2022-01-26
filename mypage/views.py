@@ -1,7 +1,7 @@
 from gettext import translation
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from .models import user, Usergame
+from .models import User, Usergame
 from bungae.models import *
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
@@ -14,16 +14,18 @@ def mypage_main(request):
     #board = BungaeBoard.objects.filter(User = str(userid)).order_by('-cre_date')
 
     if userid:
-        user_info = user.objects.get(user_id=userid)
+        user_info = User.objects.get(user_id=userid)
         user_pw = user_info.user_pw
         nickname = user_info.nickname
         
         bungae = BungaeBoard.objects.filter(User=user_info.user_id)
-        user_game = Usergame.objects.filter(user_id=user_info.user_id)
+        user_game = Usergame.objects.filter(user=user_info.user_id)
         
         return render(request,
                       'mypage/mypage.html',
-                      {'bungae':bungae
+                      {'bungae':bungae,
+                       'usergame':user_game,
+                       'nickname':nickname
                        })
     else:
         return redirect('login:login')
@@ -39,7 +41,7 @@ def change_pw(request):
         new2_pw = str(request.POST.get('new2_pw'))
         
         if userpw == old_pw:
-            user_info = user.objects.get(user_id=userid)
+            user_info = User.objects.get(user_id=userid)
             user_info.user_pw = new2_pw
             user_info.save()
             return HttpResponse('비밀번호가 변경되었습니다.')
@@ -56,8 +58,8 @@ def change_nm(request):
         new_nickname = str(request.POST.get('new_nm'))
         
         if usernickname != new_nickname:
-            user_info = user.objects.get(user_id=userid)
-            user_info.nickname = usernickname
+            user_info = User.objects.get(user_id=userid)
+            user_info.nickname = new_nickname
             user_info.save()
             return HttpResponse('닉네임이 변경되었습니다.')
         else:
