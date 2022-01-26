@@ -122,8 +122,8 @@
                     class="title"><b>{{item.game_title}}</b></p> <p class="title">{{item.game_content}}</p>
             </div>
             <div style="float:right" class="anime__details__form">
-                <form action="#">
-                    <button type="submit" style="float:right"><i class="fa fa-location-arrow"></i>시작하기</button>
+                <form action="../games/{{item.game_url}}">
+                    <button type="submit" style="float:right" onclick="location.href='games:{{item.game_url}}'"><i class="fa fa-location-arrow"></i>시작하기</button>
                 </form>
             </div>
         </div>

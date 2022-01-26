@@ -6,4 +6,5 @@ app_name = 'games'
 urlpatterns = [
     # path('roulette/', views.roulette, name = 'roulette'),
     path('hunmin/', views.hunmin, name = 'hunmin'),
+    path('roulette/', views.roulette, name = 'roulette'),
 ]
