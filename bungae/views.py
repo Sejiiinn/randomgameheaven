@@ -19,10 +19,14 @@ def bungae_board(request):
     page = int(page) # now_page int형 변환 
 
     page_obj = paginator.page(page)
-    
+
+    get_id = request.session.get('user_id')
+
+    auth = 'notnull'
     
     if request.method == 'POST':
-        get_id = request.session.get('user_id')
+        #get_id = request.session.get('user_id')
+
         
         if get_id:
             #nowDatetime = now.strftime('%Y년 %m월 %d일 %H:%M:%S')
@@ -41,9 +45,8 @@ def bungae_board(request):
             return redirect ('bungae:bungae')
 
         else:
-            return HttpResponse('로그인 후 이용해주세요.')
-    
-
-
-    return render(request, 'bungae/bungae_board.html', {'board': page_obj})
-                                                        # 'page_range' : range(start_page, end_page + 1)})
+            #return HttpResponse('로그인 후 이용해주세요.')
+            auth = 'null'
+            return render(request, 'bungae/bungae_board.html', {'board': page_obj, 'auth' : auth})
+            
+    return render(request, 'bungae/bungae_board.html', {'board': page_obj, 'auth' : auth})

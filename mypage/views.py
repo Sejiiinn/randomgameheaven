@@ -14,6 +14,7 @@ def mypage_main(request):
     userid = request.session.get('user_id')
     #board = BungaeBoard.objects.filter(User = str(userid)).order_by('-cre_date')
 
+
     if userid:
         user_info = User.objects.get(user_id=userid)
         user_pw = user_info.user_pw

@@ -2557,3 +2557,12 @@ ol {
 		padding: 18px 20px 20px;
 	}
 }
+
+a.login_class:hover {
+	color: blue;
+	text-decoration: underline;
+}
+
+a.login_class:visited {
+	color: blue;
+}
