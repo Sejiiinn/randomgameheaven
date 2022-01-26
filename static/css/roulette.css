@@ -4,8 +4,8 @@ body{
   -ms-transform: scale(1.5);
   -moz-transform: scale(1.5);
   -webkit-transform: scale(1.5);
-
-
+  transform: scale(1.5);
+  background: #190250;
 }
 ::selection{
   background: none;
