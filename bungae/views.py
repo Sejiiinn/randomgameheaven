@@ -19,12 +19,6 @@ def bungae_board(request):
     page = int(page) # now_page int형 변환 
 
     page_obj = paginator.page(page)
-
-    # start_page = (now_page - 1) // 10 * 10 + 1
-    # end_page = start_page + 9
-
-    # if end_page > p.num_pages:
-    #     end_page = p.num_pages
     
     
     if request.method == 'POST':
