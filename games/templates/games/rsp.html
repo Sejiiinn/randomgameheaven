@@ -1,0 +1,60 @@
+
+{% extends 'games/layout.html' %}
+
+{% block content %}
+
+<!-- CSS 부분 -->
+<style>
+    body{
+        width:100%;
+        height:100%;
+        text-align:center;
+    }
+    .hmBox{
+        width:300px;
+        height:300px;
+        background:rgba(255, 214, 127, 0.836);
+        display:inline-block;
+        border-radius:20px;
+    }
+    .reroll{
+        width:300px;
+        height:100px;
+        background:rgb(31, 124, 131);
+        display:inline-block;
+        border-radius:20px;
+        margin:30px;
+    }
+</style>
+
+
+<!-- HTML 부분 -->
+<body>
+    <div style="margin-top:100px">
+        <div class="hmBox">
+            <img src="/static/img/game/rsp_paper.png" style="width:auto;height:100%;">
+        </div>
+    </div>
+    <div type="button" id="reroll" class="reroll">
+        <h2 style="margin-top:25px;color:white">시작</h2>
+    </div>
+</body>
+
+
+
+<!-- JavaScript 부분 -->
+<script>
+
+// id가 reroll인 태그를 불러와, click 했을 때 change 라는 함수를 실행
+document.getElementById("reroll").addEventListener('click',change);
+
+function change(){
+    let t1 = document.getElementById('hm1');
+    let t2 = document.getElementById('hm2');
+    t1.innerText = hangul[Math.floor(Math.random() * 13)];
+    t2.innerText = hangul[Math.floor(Math.random() * 13)];
+}
+
+</script>
+
+{% endblock %}
