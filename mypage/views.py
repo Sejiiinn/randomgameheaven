@@ -44,9 +44,15 @@ def change_pw(request):
             user_info = User.objects.get(user_id=userid)
             user_info.user_pw = new2_pw
             user_info.save()
-            return HttpResponse('비밀번호가 변경되었습니다.')
-        else:
-            return HttpResponse('비밀번호가 다릅니다.')
+            request.session["user_pw"] = new2_pw
+            messages.info(request, "비밀번호가 변경되었습니다.")
+            return redirect('mypage:mypage_main')
+        elif new_pw != new2_pw:
+            messages.info(request, '비밀번호가 다릅니다.')
+            return redirect('mypage:change_pw')
+        elif new_pw == '' or new2_pw == '':
+            messages.info(request, '비밀번호를 입력하세요.')
+            return redirect('mypage:change_pw')
         
     return render(request, 'mypage/change_pw.html')
 
@@ -61,11 +67,9 @@ def change_nm(request):
             user_info = User.objects.get(user_id=userid)
             user_info.nickname = new_nickname
             user_info.save()
-            return HttpResponse('닉네임이 변경되었습니다.')
+            messages.info(request, '닉네임이 변경되었습니다.')
+            return redirect('mypage:mypage_main')
         else:
-            return HttpResponse('다시 입력하세요.')
+            messages.info(request, '다시 입력하세요.')
+            return redirect(request, 'mypage:change_nm')
     return render(request, 'mypage/change_nm.html')
-        
-        
-        
-    return 
