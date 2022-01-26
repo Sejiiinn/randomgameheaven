@@ -45,12 +45,12 @@ def change_pw(request):
             user_info.user_pw = new2_pw
             user_info.save()
             request.session["user_pw"] = new2_pw
-            messages.info(request, "비밀번호가 변경되었습니다.")
+            # messages.info(request, "비밀번호가 변경되었습니다.")
             return redirect('mypage:mypage_main')
         elif new_pw != new2_pw:
             messages.info(request, '비밀번호가 다릅니다.')
             return redirect('mypage:change_pw')
-        elif new_pw == '' or new2_pw == '':
+        else:
             messages.info(request, '비밀번호를 입력하세요.')
             return redirect('mypage:change_pw')
         
