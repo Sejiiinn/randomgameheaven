@@ -23,7 +23,6 @@ urlpatterns = [
     path('board/', include('board.urls')),
     path('login/', include('login.urls')),
     path('bungae/', include('bungae.urls')),
-    path('write', include('write.urls')),
     path('mypage/', include('mypage.urls')),
     path('recommendation/', include('recommendation.urls')),
     path('games/', include('games.urls')),

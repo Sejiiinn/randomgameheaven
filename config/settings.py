@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'main',
     'board',
     'bungae',
-    'write',
     'mypage',
     'recommendation',
     'django.contrib.admin',
@@ -100,6 +99,7 @@ DATABASES = {
 DATABASE_ROUTERS = [
     'main.router.DBRouter',
     'mypage.router.MypageDBRouter',
+    'bungae.router.BungaeDBRouter',
     ]
 
 # Password validation
