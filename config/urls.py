@@ -26,5 +26,5 @@ urlpatterns = [
     path('write', include('write.urls')),
     path('mypage/', include('mypage.urls')),
     path('recommendation/', include('recommendation.urls')),
-    path('roulette/', include('roulette.urls')),
+    path('games/', include('games.urls')),
 ]
