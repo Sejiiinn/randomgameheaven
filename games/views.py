@@ -9,13 +9,11 @@ app_name = 'games'
 def hunmin(request):
     return render(request, 'games/hunmin.html', {})
 
-<<<<<<< HEAD
+
 
 def randomgame(request):
     return render(request, 'games/randomgame.html')
     
-=======
->>>>>>> 227e581fa637419d9307128062be8b8cb10e0c55
 def roulette(request):
     return render(request, 'games/roulette.html')
 
