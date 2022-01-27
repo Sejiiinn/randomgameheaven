@@ -86,11 +86,10 @@ def change_nm(request):
 
 
 def delete_post(request):
-    post = BungaeBoard.objects.get(pk = 22)
+    post = BungaeBoard.objects.get(bungae_num = 22)
 
     if request.method == "POST":
         post.delete()
-        return redirect('mypage:delete_post')
+        return HttpResponse('삭제되었습니다.')
 
-    
-    return redirect('mypage:delete_post')
+    return redirect('mypage:mypage_main')

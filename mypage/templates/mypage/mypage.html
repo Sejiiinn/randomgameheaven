@@ -177,7 +177,10 @@
                             <td>{{ bg.bungae_num }}</td>
                             <td>{{ bg.content }}</td>
                             <td>{{ bg.cre_date }}</td>
-                            <td> <a href = "{% url 'mypage:delete_post' %}">삭제 </td>
+                            <td> <form method="POST">
+                                {% csrf_token %}
+                                <button>삭제</button>
+                            </form> </td>
                         </tr>
                         {% endfor %}
                     </tbody>
