@@ -83,13 +83,19 @@ def change_nm(request):
             return redirect(reverse('mypage:change_nm'))
         
     return render(request, 'mypage/change_nm.html')
-
-
-def delete_post(request):
-    post = BungaeBoard.objects.get(bungae_num = 22)
-
-    if request.method == "POST":
-        post.delete()
-        return HttpResponse('삭제되었습니다.')
-
-    return redirect('mypage:mypage_main')
+        
+def bungae_delete(request):
+    if request.method == 'POST':
+        b_num = int(request.POST.get('bgid'))
+        bungae_del = BungaeBoard.objects.get(bungae_num=b_num)
+        bungae_del.delete()
+        messages.success(request, "삭제되었습니다.")
+        return redirect('mypage:mypage')
+        
+def usergame_delete(request):
+    if request.method == 'POST':
+        ugameid = int(request.POST.get("hidid"))
+        user_game_del = Usergame.objects.get(user_game_id=ugameid)
+        user_game_del.delete()
+        messages.success(request, "삭제되었습니다.")
+        return redirect('mypage:mypage')
