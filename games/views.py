@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.db.models import Max
 from board.models import  Main #/recommendation 모델을 가져와야함
 import random
+from games.models import MovieQuiz
 
 app_name = 'games'
 
@@ -18,7 +19,9 @@ def roulette(request):
     return render(request, 'games/roulette.html')
 
 def moviequiz(request):
-    return render(request, 'games/moviequiz.html')
+
+    moviequiz = MovieQuiz.objects.all()
+    return render(request, 'games/moviequiz.html', {'moviequiz': moviequiz})
 
 def rsp(request):
     return render(request, 'games/rsp.html')
