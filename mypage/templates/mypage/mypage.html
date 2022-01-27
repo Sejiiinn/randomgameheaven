@@ -54,7 +54,7 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li><a href="{% url 'board:board_main'%}">게임 검색</a></li>
+                                <li><a href="{% url 'board:board_main' %}">게임 검색</a></li>
                                 <li><a href="{% url 'recommendation:recommendation' %}">술게임 추천 게시판</a></li>
                                 <li><a href="{% url 'bungae:bungae' %}">온라인 번개 모임 개시판</a></li>
                                 <li class="active"><a href="{% url 'mypage:mypage_main' %}">마이 페이지</a></li>
@@ -94,16 +94,6 @@
                             <li><b>닉네임</b></li>
                             <li><b>{{ nickname }}</b></li>
                         </ul>
-                        <!-- <table>
-                            <tr>
-                                <td><b>아이디 : </b></td>
-                                <td><b>{{ request.session.user_id }}</b></td>
-                            </tr>
-                            <tr>
-                                <td><b>닉네임 : </b></td>
-                                <td><b>{{ nickname }}</b></td>
-                            </tr>
-                        </table> -->
                     </div>
                 </div>
             </div>
@@ -141,42 +131,76 @@
                 </div>      
                 <br>
                 <p><b>술게임 추천 게시판</b></p>
-                <table class="table table-dark table-striped table-hover">
-                    <thead>
+                <table id="t_table" class="table table-hover">
+                    <thead class="thead-dark">
                     <tr>
-                        <th style="width:15%">글 번호</th>
-                        <th style="width:60%">제목</th>
+                        <th style="width:10%">글 번호</th>
+                        <th style="width:55%">제목</th>
                         <th style="width:25%">작성 일자</th>
+                        <th style="width:10%">삭제하기</th>
                     </tr>
                     </thead>
                     <tbody>
                         {% csrf_token %}
                         {% for game in usergame %}
-                        <tr class="t_hover">
-                            <td>{{ game.user_game_id }}</td>
+                        <tr>
+                            <td >{{ game.user_game_id }}</td>
                             <td>{{ game.user_game_title }}</td>
                             <td>{{ game.date_time }}</td>
+                            <td><button type="button" class="del-bt" data-toggle="modal" data-target="#del_modal">삭제</button></td>
+                            <div id="del_modal" class="modal fade" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Warning</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            게시글을 삭제하시겠습니까?
+                                        </div>
+                                        <p class="hidden_board_id" name="hidid">{{ game.user_game_id }}</p>
+                                        <div class="modal-footer">
+                                            <button onclick="delgame()" type="submit" class="btn btn-danger">삭제하기</button>
+                                            <button type="button" class="btn btn-light" data-dismiss="modal">취소하기</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                function delgame() {
+                                    location.replace("");
+                                }
+                            </script>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
                 <br>
                 <p><b>온라인 번개 모임 게시판</b></p>
-                <table class="table table-dark table-hover">
-                    <thead>
+                <table id="t_table" class="table table-hover">
+                    <thead class="thead-dark">
                     <tr>
-                        <th style="width:15%">글 번호</th>
-                        <th style="width:60%">내용</th>
+                        <th style="width:10%">글 번호</th>
+                        <th style="width:55%">내용</th>
                         <th style="width:25%">작성 일자</th>
+                        <th style="width:10%">삭제하기</th>
                     </tr>
                     </thead>
                     <tbody>
                         {% csrf_token %}
                         {% for bg in bungae %}
-                        <tr class="t_hover">
+                        <tr>
                             <td>{{ bg.bungae_num }}</td>
                             <td>{{ bg.content }}</td>
                             <td>{{ bg.cre_date }}</td>
+                            <td> <form action="" method="post">
+                                <input type = "type" value = {{bg.bungae_num}} name = "a" size=2  style="display:none">
+                                {% csrf_token %}
+                                <button class = "del-bt">삭제</button>
+                                </form>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -184,7 +208,6 @@
             </div>
         </div>
     </section>
-
 <!-- Footer Section Begin -->
 <footer class="footer">
 
@@ -227,8 +250,6 @@
 <script src="{% static 'js/jquery.slicknav.js' %}"></script>
 <script src="{% static 'js/owl.carousel.min.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
-
-
 
 </body>
 

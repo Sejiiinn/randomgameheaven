@@ -22,6 +22,12 @@ def mypage_main(request):
         
         bungae = BungaeBoard.objects.filter(user=user_info.user_id) # 변수명 User -> user로 변경
         user_game = Usergame.objects.filter(user=user_info.user_id)
+
+        if request.method == 'POST':
+            a = request.POST.get('a')
+            a = int(a)
+            post = BungaeBoard.objects.get(bungae_num = a)
+            post.delete()
         
         return render(request,
                       'mypage/mypage.html',
@@ -83,3 +89,12 @@ def change_nm(request):
             return redirect(reverse('mypage:change_nm'))
         
     return render(request, 'mypage/change_nm.html')
+
+    
+def usergame_delete(request):
+    if request.method == 'POST':
+        ugameid = int(request.POST.get("hidid"))
+        user_game_del = Usergame.objects.get(user_game_id=ugameid)
+        user_game_del.delete()
+        messages.success(request, "삭제되었습니다.")
+        return redirect('mypage:mypage')

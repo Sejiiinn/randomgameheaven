@@ -27,4 +27,4 @@ def rsp(request):
     return render(request, 'games/rsp.html')
 
 def keepface(request):
-    return render(request, 'game/keepface.html')
+    return render(request, 'games/keepface.html')
