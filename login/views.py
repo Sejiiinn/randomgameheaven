@@ -26,7 +26,7 @@ def signup(request):
             return render(request, 'login/signup.html', messages.info(request, 'nickname을 입력해주세요.'))
         else:
             m.save()    
-            return render(request, 'login/signup.html', messages.info(request, '회원가입 완료! 로그인 페이지로 넘어가주세요.'))
+            return render(request, 'login/login.html', messages.info(request, '회원가입 완료! 로그인해주세요!!'))
         
     else:
         #messages.info(request, '테스트입니다.')
