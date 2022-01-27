@@ -99,3 +99,13 @@ def usergame_delete(request):
         user_game_del.delete()
         messages.success(request, "삭제되었습니다.")
         return redirect('mypage:mypage')
+
+def delete_post(request):
+    if request.method == 'POST':
+        a = request.POST.get('a')
+        a = int(a)
+        post = BungaeBoard.objects.get(bungae_num = a)
+        post.delete()
+        return render(request, 'mypage/delete_post.html')
+
+    return render(request, 'mypage/delete_post.html')
