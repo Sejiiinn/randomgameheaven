@@ -37,7 +37,7 @@ def create(request):
         
         user_id = request.session.get('user_id')
         user_game_title = str(request.POST.get('user_game_title'))
-        user_game_content = str(request.POST.get('user_game_title'))
+        user_game_content = str(request.POST.get('user_game_content'))
         user_game_img = request.FILES.get('user_game_img')
         date_time = datetime.datetime.now()
         
