@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
 import datetime
-
+from django.contrib import messages
 from recommendation.models import *
 from django.core.paginator import Paginator
 # from login.models import user
@@ -17,10 +17,14 @@ def recommendation(request):
     page_obj = paginator.page(page)
     auth = 'notnull'
 
-    start_page = (page - 1) // 6 * 6 + 1
-    end_page = start_page + 5
-    if end_page > paginator.num_pages:
+    start_page = (page - 2)
+    end_page = start_page + 4
+    if end_page >= paginator.num_pages:
         end_page = paginator.num_pages
+        start_page = end_page - 4
+    if start_page < 1:
+        start_page = 1
+        end_page = 5
 
 
     return render(request, 'recommendation/recommendation.html', {'posts' : page_obj, 'auth' : auth, 'page_range' : range(start_page, end_page + 1)})
@@ -30,7 +34,9 @@ def write_form(request):
     if get_id:
         return render(request, 'recommendation/write_form.html')
     else:
-        return HttpResponse('로그인 후 이용해주세요.')
+        messages.info(request, '로그인 후 이용해주세요.')
+        return redirect('recommendation:recommendation')
+
 
 def create(request):
     if request.method == "POST":
@@ -43,12 +49,14 @@ def create(request):
         
         
 
-
+            
+        
         post = Post(user = User.objects.get(user_id = user_id),
         user_game_title = user_game_title, 
         user_game_content = user_game_content, 
         user_game_img = user_game_img, 
         date_time = date_time)
+
 
         post.save()
     return redirect('recommendation:recommendation')

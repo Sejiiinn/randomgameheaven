@@ -101,18 +101,31 @@
                                     </div>
                                     <form action="{% url 'recommendation:create' %}">
                                         <span style="float:right;">
-                                            <button type="button"><i class="fa fa-location-arrow"></i><a href="{% url 'recommendation:write' %}">글쓰기</a></button>
+                                            <button type="button"><i class="fa fa-location-arrow"></i><a href="{% url 'recommendation:write' %}" style="color:white">글쓰기</a></button>
                                         </span>
                                     </form>
                                 </div>
 
 
-
-
-
-
                             </div>
                         </div>
+
+
+                        {% if messages %}
+                            {% for message in messages %}
+                            <div class="row" style="margin:20px auto;">
+                                <div class="col-sm-12">
+                                    <div class="alert alert-danger">
+                                    <strong>{{ message.message }}</strong>
+                                    </div>
+                                </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+
+
+
                         {% comment %} <div class="row">
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
@@ -248,7 +261,7 @@
                 <div class="product__pagination">
                     {% for page_number in page_range %}
                     {% if page_number == posts.number %}
-                    <a href='{% url "recommendation:recommendation" %}?page={{ page_number }}'>{{ page_number }}</a>
+                    <a href='{% url "recommendation:recommendation" %}?page={{ page_number }}'><strong><p style="font-size:110%;color:white">{{ page_number }}</p></strong></a>
                     {% else %}
                     <a href='{% url "recommendation:recommendation" %}?page={{ page_number }}'>{{ page_number }}</a>
                     {% endif %}
