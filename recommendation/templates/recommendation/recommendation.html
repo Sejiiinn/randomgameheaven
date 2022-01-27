@@ -66,7 +66,7 @@
                     <div class="col-lg-2">
                         <div class="header__right">
                             
-                            <a href="./login.html"><span class="icon_profile"></span></a>
+                            <a href="{% url 'login:login' %}"><span class="icon_profile"></span></a>
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                                 
                             </div>
                         </div>
-                        <div class="row">
+                        {% comment %} <div class="row">
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="{% static 'img/shibadog.png' %}">
@@ -151,25 +151,40 @@
                                         <h5><a href="#">예시 2</a></h5>
                                     </div>
                                 </div>
-                            </div>
+                            </div> {% endcomment %}
 
 
 
+                            <div class="row">
+                            {% for data in posts %}
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                        <div class="product__item__pic set-bg" data-setbg="{% static 'img/shibadog.png' %}">
+                                            <div class="comment"><i class="fa fa-comments"></i> 11</div>
+                                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                        </div>
+                                        <div class="product__item__text">
+                                            <h5><a href="#">{{data.user_game_title}}</a></h5>
+                                        </div>
 
-                            {% for p in posts.all%}
-	                            <h1> {{p.user_game_title}} </h1>
-                            	<p> {{p.user_game_content}} </p>
-                            	<br><br>
+
+                                        <div class="product__item__text">
+                                            <h5><a href="#">{{data.user_game_content}}</a></h5>
+                                        </div>
+
+
+                                  </div>
+                                </div>
                             {%endfor%}
 
+                 
 
 
 
 
 
 
-
-                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            {% comment %} <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="img/popular/popular-3.jpg">
                                         <div class="comment"><i class="fa fa-comments"></i> 11</div>
@@ -218,12 +233,12 @@
                                             <li>Movie</li>
                                         </ul>
                                         <h5><a href="#">Monogatari Series: Second Season</a></h5>
-                                    </div>
-                                </div>
+                                    </div> {% endcomment %}
+                                {% comment %} </div>
                             </div>
                             
                         </div>
-                    </div>
+                    </div> {% endcomment %}
                     <div class="product__pagination">
                         <a href="#" class="current-page">1</a>
                         <a href="#">2</a>
