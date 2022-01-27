@@ -161,16 +161,9 @@
                             {% for data in posts %}
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="product__item">
-                                        {% if data.user_game_img == null %}
+ 
                                             <div class="product__item__pic set-bg" data-setbg="{% static 'img/shibadog.png' %}">
                                                 <div class="comment">수정</div>
-                                                
-                                                
-
-
-
-
-
 
                                             </div>
                                             <div class="product__item__text">
@@ -182,33 +175,7 @@
                                                 <FONT color="white">{{data.user_game_content}}</FONT>
                                             </div>
 
-                                        {% else %}
-                                            <div class="product__item__pic set-bg" data-setbg={{data.user_game_img}}>
-                                                <div class="comment">수정</div>
-                                                
-
-
-
-
-
-
-
-
-
-
-
-
-                                            </div>
-                                            <div class="product__item__text">
-                                                <FONT size=5 color="white">{{data.user_game_title}}</FONT>
-                                            </div>
-
-
-                                            <div class="product__item__text">
-                                                <FONT color="white">{{data.user_game_content}}</FONT>
-                                            </div>
-
-                                        {% endif %}
+      
 
 
                                   </div>
