@@ -1,40 +1,28 @@
 var foods = [
     {
-      name:'A',
+      name:'안경',
       prop: 1
     }, 
     { 
-      name:'B',
+      name:'단발',
       prop: 1
     },{
-      name:'C',
+      name:'짧은 머리',
       prop: 1
     },{
-      name: 'D',
+      name: '후드',
       prop: 1
     },{
-      name: 'E',
-      prop: 20
-    },{
-      name: 'F',
+      name: '검은 옷',
       prop: 1
     },{
-      name: 'G',
-      prop: 5
-    }, 
-  // {
-  //     name: 'H',
-  //     prop: 5
-  //   },{
-  //     name: 'I',
-  //     prop: 5
-  //   }, {
-  //     name: 'J',
-  //     prop: 3
-  //   }, {
-  //     name: 'K',
-  //     prop: 2
-  //   }
+      name: '장발',
+      prop: 1
+    },{
+      name: '셔츠',
+      prop: 1
+    },
+    
   ];
 var options = [];
 for(var i in foods){
@@ -89,7 +77,7 @@ function drawRouletteWheel() {
     ctx = canvas.getContext("2d");
     ctx.clearRect(0,0,500,500);
 
-    ctx.strokeStyle = "black";
+    ctx.strokeStyle = "white";
     ctx.lineWidth = 2;
 
     ctx.font = 'bold 12px Helvetica, Arial';
@@ -106,8 +94,8 @@ function drawRouletteWheel() {
       ctx.fill();
 
       ctx.save();
-      ctx.shadowOffsetX = -1;
-      ctx.shadowOffsetY = -1;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
       ctx.shadowBlur    = 0;
       ctx.shadowColor   = "rgb(220,220,220)";
       ctx.fillStyle = "black";
