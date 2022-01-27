@@ -54,7 +54,7 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="active"><a>게임 검색</a></li>
+                                <li class="active"><a href="{% url 'board:board_main' %}">게임 검색</a></li>
                                 <li><a href="{% url 'recommendation:recommendation' %}">술게임 추천 게시판</a></li>
                                 <li><a href="{% url 'bungae:bungae' %}">온라인 번개 모임 게시판</a></li>
                                 <li><a href="{% url 'mypage:mypage_main' %}">마이 페이지</a></li>
@@ -65,21 +65,12 @@
                 <div class="col-lg-2">
                     <div class="header__right">
                         <a href="{% url 'login:login' %}"><span class="icon_profile"></span></a>
-
                         {% if request.session.user_id %}
-
                             <a href="{% url 'login:logout' %}">
-
                                 {{ request.session.nickname }} (로그아웃)
-
                             </a>
-
-
-
                         {% else %}
-
                             <p><span style="color:white">현재 상태 : Guest</span></p>
-
                         {% endif %}
                     </div>
                 </div>
