@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 import datetime
 
-#from sqlalchemy import ForeignKey
 from recommendation.models import *
 from django.core.paginator import Paginator
 # from login.models import user
