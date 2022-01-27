@@ -1736,6 +1736,24 @@ ol {
 	font-size: 20px;
 }
 
+#t_table th{
+	color: #ffffff;
+	font-weight: bold;
+	text-align: center;
+	background-color: #1d1e39;
+}
+
+#t_table tr, td{
+	color: #ffffff;
+	font-weight: bold;
+	text-align: center;
+}
+
+#t_table tr:hover {
+	color: #FFFFFF;
+	background-color: #1d1e39;
+}
+
 .show__myboard h3:after,
 .show__profile h3:after {
 	position: absolute;
@@ -1745,6 +1763,11 @@ ol {
 	width: 4px;
 	background: #e53637;
 	content: "";
+}
+
+.t_hover {
+	color: #ffffff;
+	font-weight: normal;
 }
 
 .t_hover tr:hover {
@@ -1905,6 +1928,25 @@ ol {
 	width: 370px;
 	margin-bottom: 20px;
 	margin: 0 auto;
+}
+
+.del-bt {
+	font-size: 13px;
+	color: #ffffff;
+	background: #e53637;
+	font-weight: 800;
+	border: 2px;
+	border-radius: 2px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 5px 8px;
+	margin:auto;
+	display:block;
+}
+
+.hidden_board_id {
+	display :none;
 }
 
 /*---------------------
