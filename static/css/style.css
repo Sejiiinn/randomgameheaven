@@ -1797,7 +1797,6 @@ ol {
 .show__profile  ul li{
 	position:relative;
 	display:inline-block;
-	width:100px;
 	text-align:center;
   }
 .show__profile ul li:first-child::after{

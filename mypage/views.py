@@ -24,10 +24,18 @@ def mypage_main(request):
         user_game = Usergame.objects.filter(user=user_info.user_id)
 
         if request.method == 'POST':
-            a = request.POST.get('a')
-            a = int(a)
-            post = BungaeBoard.objects.get(bungae_num = a)
-            post.delete()
+            
+            if request.POST.get('a'):
+                a = request.POST.get('a')
+                a = int(a)
+                post = BungaeBoard.objects.get(bungae_num = a)
+                post.delete()
+            
+            if request.POST.get('b'):
+                b = request.POST.get('b')
+                b = int(b)
+                game_post = Usergame.objects.get(user_game_id = b)
+                game_post.delete()
         
         return render(request,
                       'mypage/mypage.html',
