@@ -6,12 +6,14 @@ from bungae.models import *
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.urls import reverse
 
 from bungae.models import BungaeBoard
 
 def mypage_main(request):
     userid = request.session.get('user_id')
     #board = BungaeBoard.objects.filter(User = str(userid)).order_by('-cre_date')
+
 
     if userid:
         user_info = User.objects.get(user_id=userid)
@@ -45,12 +47,15 @@ def change_pw(request):
             user_info.user_pw = new2_pw
             user_info.save()
             request.session["user_pw"] = new2_pw
-            messages.info(request, "비밀번호가 변경되었습니다.")
+            # messages.info(request, "비밀번호가 변경되었습니다.")
             return redirect('mypage:mypage_main')
         elif new_pw != new2_pw:
-            messages.info(request, '비밀번호가 다릅니다.')
+            messages.info(request, '변경할 비밀번호가 서로 다릅니다.')
             return redirect('mypage:change_pw')
-        elif new_pw == '' or new2_pw == '':
+        elif userpw != old_pw:
+            messages.info(request, '현재 비밀번호가 다릅니다.')
+            return redirect('mypage:change_pw')
+        else:
             messages.info(request, '비밀번호를 입력하세요.')
             return redirect('mypage:change_pw')
         
@@ -66,10 +71,15 @@ def change_nm(request):
         if usernickname != new_nickname:
             user_info = User.objects.get(user_id=userid)
             user_info.nickname = new_nickname
+            request.session['nickname'] = new_nickname
             user_info.save()
-            messages.info(request, '닉네임이 변경되었습니다.')
+            # messages.info(request, '닉네임이 변경되었습니다.')
             return redirect('mypage:mypage_main')
+        elif new_nickname == '':
+            messages.info(request, '다시 입력하세요.')
+            return redirect(reverse('mypage:change_nm'))
         else:
             messages.info(request, '다시 입력하세요.')
-            return redirect(request, 'mypage:change_nm')
+            return redirect(reverse('mypage:change_nm'))
+        
     return render(request, 'mypage/change_nm.html')

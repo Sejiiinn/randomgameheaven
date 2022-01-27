@@ -53,10 +53,10 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="">게임 검색</a></li>
+                                <li><a href="{% url 'board:board_main'%}">게임 검색</a></li>
                                 <li><a href="{% url 'recommendation:recommendation' %}">술게임 추천 게시판</a></li>
                                 <li><a href="{% url 'bungae:bungae' %}">온라인 번개 모임 개시판</a></li>
-                                <li><a href="{% url 'mypage:mypage_main' %}">마이 페이지</a></li>
+                                <li class="active"><a href="{% url 'mypage:mypage_main' %}">마이 페이지</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -64,6 +64,13 @@
                 <div class="col-lg-2">
                     <div class="header__right">
                         <a href="{% url 'login:login' %}"><span class="icon_profile"></span></a>
+                        {% if request.session.user_id %}
+                            <a href="{% url 'login:logout' %}">
+                                {{ request.session.nickname }} (로그아웃)
+                            </a>
+                        {% else %} 
+                            <p><span style="color:white">현재 상태 : Guest</span></p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -73,33 +80,38 @@
     <!-- Header End -->
     <section class="login spad">
         <div class="container">
-            <div class="row">
-                <!-- <div class="col-lg-6"> -->
                     <div class="nickname__form">
                         <h3>비밀번호 변경하기</h3>
                         <form action="" method="post">
                         {% csrf_token %}
-                        <div class="input__item"> 
-                            <input type="password" placeholder="현재 비밀번호" name="old_pw"><br>
-                        </div>
-                        <div class="input__item"> 
-                            <input type="password" placeholder="변경할 비밀번호" name="new_pw"><br>
-                        </div>
-                        <div class="input__item"> 
-                            <input type="password" placeholder="비밀번호 재확인" name="new2_pw"><br>
-                        </div>
-                        <button type="submit" class="btn btn-danger">변경하기</button>
-                        {% if messages %}
-                        <div>
-                            {% for message in messages %}
-                            {{ message.tag }}! {{ message.message }}
-                            {% endfor %}
-                        </div>
-                        {% endif %}
-                    </form>
+                            <div class="chpw__form">
+                                <div class="input__item"> 
+                                    <input type="password" placeholder="현재 비밀번호" name="old_pw"><br>
+                                </div>
+                                <div class="input__item"> 
+                                    <input type="password" placeholder="변경할 비밀번호" name="new_pw"><br>
+                                </div>
+                                <div class="input__item"> 
+                                    <input type="password" placeholder="비밀번호 재확인" name="new2_pw"><br>
+                                </div>
+                                <button type="submit" class="ch-bt">변경하기</button>
+                                {% if messages %}
+                                <div class="msg-bt">
+                                    <br>
+                                    {% for message in messages %}
+                                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                        </svg>
+                                        <strong>&nbsp;{{ message }}</strong>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
+                        </form>
+                    </div>
                 </div>
-                <!-- </div> -->
-            </div>
         </div>
     </div>
     <!-- The Modal -->
