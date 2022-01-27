@@ -1721,9 +1721,10 @@ ol {
   Mypage
 -----------------------*/
 .myboard {
-	padding-top: 130px;
-	padding-bottom: 0px;
+	padding-top: 80px;
+	padding-bottom: 50px;
 }
+
 .myboard h3 {
 	color: #ffffff;
 	font-weight: 700;
@@ -1735,7 +1736,8 @@ ol {
 	font-size: 20px;
 }
 
-.myboard h3:after, .show__profile h3:after {
+.show__myboard h3:after,
+.show__profile h3:after {
 	position: absolute;
 	left: 0;
 	top: -6px;
@@ -1753,9 +1755,11 @@ ol {
 	padding-bottom: 0px;
 }
 
-/* .show__profile {
-	padding-left: 50px;
-} */
+.show__profile p {
+	font-size: 24px;
+	padding: 10px;
+	color: #ffffff;
+}
 
 .profile h3{
 	color: #ffffff;
@@ -1763,6 +1767,33 @@ ol {
 	font-family: "Oswald", sans-serif;
 	margin-bottom: 30px;
 }
+
+.show__profile ul{
+	list-style:none
+  }
+.show__profile  ul li{
+	position:relative;
+	display:inline-block;
+	width:100px;
+	text-align:center;
+  }
+.show__profile ul li:first-child::after{
+	position:absolute;
+	content:"";
+	top:10px;
+	right:0;
+	width:3px;
+	height:30px;
+	background-color:rgba(255, 255, 255, 0.2);
+  }
+
+.show__profile li {
+	font-size: 20px;
+	padding: 10px;
+	color: #ffffff;
+	text-align: left;
+}
+
 .nickname__form {
 	position: relative;
 	padding-left: 120px;
@@ -1845,12 +1876,6 @@ ol {
 	bottom: 12px;
 }
 
-.show__profile table tr td {
-	font-size: 20px;
-	padding: 10px;
-	color: #ffffff;
-}
-
 .ch-bt {
 	font-size: 15px;
 	color: #ffffff;
@@ -1864,6 +1889,22 @@ ol {
 	padding: 12px 30px;
 	margin:auto;
 	display:block;
+}
+
+.ch-bt:hover{
+	color: #FFFFFF;
+	background-color: #DB0000;
+}
+
+.chpw__form .input__item{
+	margin: 0 auto;
+}
+
+.msg-bt {
+	position: relative;
+	width: 370px;
+	margin-bottom: 20px;
+	margin: 0 auto;
 }
 
 /*---------------------
@@ -2515,4 +2556,13 @@ ol {
 	.anime__review__item__text {
 		padding: 18px 20px 20px;
 	}
+}
+
+a.login_class:hover {
+	color: blue;
+	text-decoration: underline;
+}
+
+a.login_class:visited {
+	color: blue;
 }
