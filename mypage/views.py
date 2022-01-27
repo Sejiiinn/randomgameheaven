@@ -83,3 +83,14 @@ def change_nm(request):
             return redirect(reverse('mypage:change_nm'))
         
     return render(request, 'mypage/change_nm.html')
+
+
+def delete_post(request):
+    post = BungaeBoard.objects.get(pk = 22)
+
+    if request.method == "POST":
+        post.delete()
+        return redirect('mypage:delete_post')
+
+    
+    return redirect('mypage:delete_post')
