@@ -170,7 +170,7 @@
                             </div>
                             <script type="text/javascript">
                                 function delgame() {
-                                    location.location("");
+                                    location.replace("");
                                 }
                             </script>
                         </tr>
@@ -192,11 +192,11 @@
                         {% csrf_token %}
                         {% for bg in bungae %}
                         <tr>
-                            <td name="bg_num">{{ bg.bungae_num }}</td>
+                            <td>{{ bg.bungae_num }}</td>
                             <td>{{ bg.content }}</td>
                             <td>{{ bg.cre_date }}</td>
-                            <td><button type="button" class="del-bt" data-toggle="modal" data-target="#del_modal">삭제</button></td>
-                            <div id="del_modal" class="modal fade" tabindex="-1" role="dialog">
+                            <td><button type="button" class="del-bt" data-toggle="modal" data-target="#del_modal2">삭제</button></td>
+                            <div id="del_modal2" class="modal fade" tabindex="-1" role="dialog">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -208,9 +208,8 @@
                                         <div class="modal-body">
                                             게시글을 삭제하시겠습니까?
                                         </div>
-                                        <p class="hidden_board_id" name="hidid">{{ game.user_game_id }}</p>
                                         <div class="modal-footer">
-                                            <button onclick="delgame()" type="submit" class="btn btn-danger">삭제하기</button>
+                                            <button onclick="delbungae()" type="submit" class="btn btn-danger">삭제하기</button>
                                             <button type="button" class="btn btn-light" data-dismiss="modal">취소하기</button>
                                         </div>
                                     </div>
