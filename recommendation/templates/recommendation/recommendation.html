@@ -92,29 +92,25 @@
                                 <div class="col-lg-8 col-md-8 col-sm-6">
                                     <div class="section-title">
                                         <h4>술게임 추천 게시판</h4>
-
-
-                                        <div class="anime__details__form">
-                                            <div class="section-title">
-                                            </div>
-                                            <form action="#">
-                                                <span style="float:right;">
-
-
-
-
-
-                                                    <button type="submit"><i class="fa fa-location-arrow"></i><a href="{% url 'recommendation:write' %}"> 글쓰기(위치 옮겨야 함)</a></button>
-                                                </span>
-                                            </form>
-                                        </div>
-
-
-
-
                                     </div>
                                 </div>
-                                
+
+
+                                <div class="anime__details__form">
+                                    <div class="section-title">
+                                    </div>
+                                    <form action="{% url 'recommendation:create' %}">
+                                        <span style="float:right;">
+                                            <button type="button"><i class="fa fa-location-arrow"></i><a href="{% url 'recommendation:write' %}">글쓰기</a></button>
+                                        </span>
+                                    </form>
+                                </div>
+
+
+
+
+
+
                             </div>
                         </div>
                         {% comment %} <div class="row">
@@ -165,18 +161,54 @@
                             {% for data in posts %}
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="product__item">
-                                        <div class="product__item__pic set-bg" data-setbg="{% static 'img/shibadog.png' %}">
-                                            <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                        </div>
-                                        <div class="product__item__text">
-                                            <h5><a href="#">{{data.user_game_title}}</a></h5>
-                                        </div>
+                                        {% if data.user_game_img == null %}
+                                            <div class="product__item__pic set-bg" data-setbg="{% static 'img/shibadog.png' %}">
+                                                <div class="comment">수정</div>
+                                                
+                                                
 
 
-                                        <div class="product__item__text">
-                                            <h5><a href="#">{{data.user_game_content}}</a></h5>
-                                        </div>
+
+
+
+
+                                            </div>
+                                            <div class="product__item__text">
+                                                <FONT size=5 color="white">{{data.user_game_title}}</FONT>
+                                            </div>
+
+
+                                            <div class="product__item__text">
+                                                <FONT color="white">{{data.user_game_content}}</FONT>
+                                            </div>
+
+                                        {% else %}
+                                            <div class="product__item__pic set-bg" data-setbg={{data.user_game_img}}>
+                                                <div class="comment">수정</div>
+                                                
+
+
+
+
+
+
+
+
+
+
+
+
+                                            </div>
+                                            <div class="product__item__text">
+                                                <FONT size=5 color="white">{{data.user_game_title}}</FONT>
+                                            </div>
+
+
+                                            <div class="product__item__text">
+                                                <FONT color="white">{{data.user_game_content}}</FONT>
+                                            </div>
+
+                                        {% endif %}
 
 
                                   </div>
@@ -245,14 +277,17 @@
                             
                         </div>
                     </div> {% endcomment %}
-                    <div class="product__pagination">
-                        <a href="#" class="current-page">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#"><i class="fa fa-angle-double-right"></i></a>
-                    </div>
+                    
+                </div>
+                <div class="product__pagination">
+                    {% for page_number in page_range %}
+                    {% if page_number == posts.number %}
+                    <a href='{% url "recommendation:recommendation" %}?page={{ page_number }}'>{{ page_number }}</a>
+                    {% else %}
+                    <a href='{% url "recommendation:recommendation" %}?page={{ page_number }}'>{{ page_number }}</a>
+                    {% endif %}
+                    {% endfor %}
+                    <a href="#"><i class="fa fa-angle-double-right"></i></a>
                 </div>
 
     
