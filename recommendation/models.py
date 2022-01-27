@@ -21,7 +21,7 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     user_game_title = models.CharField(max_length=50)
     user_game_content = models.TextField()
-    user_game_img = models.ImageField(null=True, upload_to='', blank=True)
+    user_game_img = models.CharField(max_length=50)
     date_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
