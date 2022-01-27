@@ -1,27 +1,8 @@
 var foods = [
     {
-      name:'안경',
+      name:'항목을 추가하세요!',
       prop: 1
-    }, 
-    { 
-      name:'단발',
-      prop: 1
-    },{
-      name:'짧은 머리',
-      prop: 1
-    },{
-      name: '후드',
-      prop: 1
-    },{
-      name: '검은 옷',
-      prop: 1
-    },{
-      name: '장발',
-      prop: 1
-    },{
-      name: '셔츠',
-      prop: 1
-    },
+    }
     
   ];
 var options = [];
@@ -42,8 +23,29 @@ var spinTime = 0;
 var spinTimeTotal = 0;
 
 var ctx;
+var Inputed = false;
 
 document.getElementById("spin").addEventListener("click", spin);
+document.getElementById("input_button").addEventListener("click", newInput);
+
+function newInput(){
+  it = document.getElementById("input_text");
+  tmp = {name:it.value, prop:1}
+  console.log(tmp.name)
+  if (tmp.name == ""){
+    alert("항목을 입력하세요.")
+    return
+  }
+  
+  if (!Inputed){
+    options = [];
+    Inputed = true;
+  }
+  it.value = "";
+  options.push(tmp.name);
+  arc = Math.PI / (options.length / 2);
+  drawRouletteWheel();
+}
 
 function byte2Hex(n) {
   var nybHexString = "0123456789ABCDEF";
@@ -125,7 +127,7 @@ function drawRouletteWheel() {
 function spin() {
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
-  spinTimeTotal = Math.random() * 3 + 4 * 1000;
+  spinTimeTotal = Math.random() * 3 + 6 * 1000;
   rotateWheel();
 }
 
