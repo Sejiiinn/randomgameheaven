@@ -64,6 +64,13 @@
                 <div class="col-lg-2">
                     <div class="header__right">
                         <a href="{% url 'login:login' %}"><span class="icon_profile"></span></a>
+                        {% if request.session.user_id %}
+                            <a href="{% url 'login:logout' %}">
+                                {{ request.session.nickname }} (로그아웃)
+                            </a>
+                        {% else %}
+                            <p><span style="color:white">현재 상태 : Guest</span></p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
