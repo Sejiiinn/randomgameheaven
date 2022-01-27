@@ -18,11 +18,11 @@ class User(models.Model):
 
 class Post(models.Model):
     user_game_id = models.AutoField(primary_key=True)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     user_game_title = models.CharField(max_length=50)
     user_game_content = models.TextField()
-    user_game_img = models.ImageField(blank=True, upload_to='user_img')
-    date_time = models.DateTimeField()
+    user_game_img = models.ImageField(null=True, upload_to='', blank=True)
+    date_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = 'user_game'
