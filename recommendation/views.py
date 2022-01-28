@@ -4,11 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 import datetime
 from django.contrib import messages
-<<<<<<< HEAD
 from sqlalchemy import null
-=======
-# from recommendation.forms import FileUploadForm
->>>>>>> 556881a43484d7b6c1a6d8f2fa7d482e005671b3
 from recommendation.models import *
 from django.core.paginator import Paginator
 # from login.models import user
@@ -57,28 +53,6 @@ def create(request):
         except:
             user_game_img = "None"
         date_time = datetime.datetime.now()
-<<<<<<< HEAD
-=======
-
-
-        # form = FileUploadForm(request.POST, request.FILES)
-        # if form.is_valid():
-        #     uploadFile = form.save()
-        #     name = uploadFile.imgfile.name
-        #     size = uploadFile.imgfile.size
-        #     return HttpResponse('%s<br>%s' % (name, size))
-        # else:
-        #     form = FileUploadForm()
-
-        # imgfile = request.POST.get('imgfile')
-        # fileupload = FileUpload(imgfile=imgfile)
-        # fileupload.save()
-        # fileupload = FileUpload(imgfile = img)
-        # fileupload.save()
-        
-        
-
->>>>>>> 556881a43484d7b6c1a6d8f2fa7d482e005671b3
             
         
         post = Post(user = User.objects.get(user_id = user_id),
