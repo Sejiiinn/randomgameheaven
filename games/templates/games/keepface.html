@@ -145,7 +145,7 @@
 
         function stop(){
             tmmsg.innerHTML = '웃음 참기 시작';
-            puase();
+            clearInterval(x);
             tmmsg.classList.remove('start');
         }
 
@@ -154,6 +154,8 @@
             psbt.addEventListner('click', pause);
             stpbt.addEventListner('click', stop);
         }
+
+        init();
 
         </script>
         
