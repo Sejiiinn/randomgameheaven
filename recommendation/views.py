@@ -1,8 +1,10 @@
+from msilib.schema import File
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
 import datetime
 from django.contrib import messages
+from sqlalchemy import null
 from recommendation.models import *
 from django.core.paginator import Paginator
 # from login.models import user
@@ -10,6 +12,7 @@ from django.core.paginator import Paginator
 
 def recommendation(request):
     posts = Post.objects.all().order_by('-date_time')
+    # pictures = FileUpload.objects.all()
 
     page = request.GET.get('page', 1)
     paginator = Paginator(posts, 9)
@@ -44,18 +47,20 @@ def create(request):
         user_id = request.session.get('user_id')
         user_game_title = str(request.POST.get('user_game_title'))
         user_game_content = str(request.POST.get('user_game_content'))
-        user_game_img = str(request.POST.get('user_game_img'))
+        user_game_img = ""
+        try:
+            user_game_img = request.FILES['image']
+        except:
+            user_game_img = "None"
         date_time = datetime.datetime.now()
-        
-        
-
             
         
         post = Post(user = User.objects.get(user_id = user_id),
         user_game_title = user_game_title, 
         user_game_content = user_game_content, 
         user_game_img = user_game_img, 
-        date_time = date_time)
+        date_time = date_time,
+        )
 
 
         post.save()

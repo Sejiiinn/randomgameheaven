@@ -19,7 +19,7 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+        rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
@@ -54,7 +54,8 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li><a href="{% url 'board:board_main' %}">게임 검색</a></li>
-                                <li class="active"><a href="{% url 'recommendation:recommendation' %}">술게임 추천 게시판</a></li>
+                                <li class="active"><a href="{% url 'recommendation:recommendation' %}">술게임 추천 게시판</a>
+                                </li>
                                 <li><a href="{% url 'bungae:bungae' %}">온라인 번개 모임 게시판</a></li>
                                 <li><a href="{% url 'mypage:mypage_main' %}">마이 페이지</a></li>
                             </ul>
@@ -63,7 +64,7 @@
                 </div>
                 <div class="col-lg-2">
                     <div class="header__right">
-                        
+
                         <a href="{% url 'login:login' %}"><span class="icon_profile"></span></a>
                     </div>
                 </div>
@@ -78,149 +79,138 @@
 
 
 
-      <form action="{% url 'recommendation:create' %}" method="post">
-          {% csrf_token %}
+        <form action="{% url 'recommendation:create' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
 
 
 
-      <div class="container">
-          <div class="anime__details__content">
-              
-              <div class="row">
-                  <div class="col-lg-8 col-md-8">
-                      <div class="anime__details__review">
-                          <div class="section-title">
-                              <h5>글쓰기</h5>
-                          </div>
+            <div class="container">
+                <div class="anime__details__content">
 
-                          <div class="anime__review__item">
-                              <div class="anime__review__item__text">
-                                  <h6>제목</h6>
-                                  <form action="" method="post">
-                                  <p><input placeholder="제목을 입력하세요" style="width:700px;resize: none;" name="user_game_title"></p>
-                              </div>
-                          </div>
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8">
+                            <div class="anime__details__review">
+                                <div class="section-title">
+                                    <h5>글쓰기</h5>
+                                </div>
+
+                                <div class="anime__review__item">
+                                    <div class="anime__review__item__text">
+                                        <h6>제목</h6>
+                                            <p><input placeholder="제목을 입력하세요" style="width:700px;resize: none;"
+                                                    name="user_game_title"></p>
+                                    </div>
+                                </div>
 
 
-                          <div class="anime__review__item">
-                            <div class="anime__review__item__text">
-                                <h6>내용</h6>
-                                <form action="" method="post">
-                                <p><textarea cols="84" rows="20" placeholder="내용을 입력하세요" style="resize: none;" name="user_game_content"></textarea></p>
+                                <div class="anime__review__item">
+                                    <div class="anime__review__item__text">
+                                        <h6>내용</h6>
+                                            <p><textarea cols="84" rows="20" placeholder="내용을 입력하세요"
+                                                    style="resize: none;" name="user_game_content"></textarea></p>
+                                    </div>
+                                </div>
+
+
                             </div>
+                            
+                            <div class="anime__details__form">
+                                <form>
+                                    <button class=button1 type="submit"><i class="fa fa-location-arrow"></i> 게시하기</button>
+                                </form>
+                            </div>
+                            <input type="file" name="image">
+
+                            <style>
+                                .button1{
+                                    background-color: rgb(255, 56, 56);
+                                    border: 0px;
+                                    border-radius: 5px;
+                                    margin-bottom: 30px;
+                                    color: white;
+                                    font-size: small;
+                                    padding: 7px;
+                                }
+                            </style>
                         </div>
 
-
-
-                        <h5><p style="font-size:110%;color:white">사진을 골라주세요.</p></h5>
-                        <form method="POST" action="">
-                            {% csrf_token %}
-                            <body style="font-size:100%;color:white"><input type="radio" name="user_game_img" value="소주"> 소주&nbsp;&nbsp;</body>
-                            <body style="font-size:100%;color:white"><input type="radio" name="user_game_img" value="맥주"> 맥주&nbsp;&nbsp;</body>
-                            <body style="font-size:100%;color:white"><input type="radio" name="user_game_img" value="막걸리"> 막걸리&nbsp;&nbsp;</body>
-                            <body style="font-size:100%;color:white"><input type="radio" name="user_game_img" value="와인"> 와인&nbsp;&nbsp;</body>
-                            <body style="font-size:100%;color:white"><input type="radio" name="user_game_img" value="위스키"> 위스키&nbsp;&nbsp;</body>
-                            <body style="font-size:100%;color:white"><input type="radio" name="user_game_img" value="보드카"> 보드카&nbsp;&nbsp;</body>
-
-                      </div>
-                      <div class="anime__details__form">
-
-                          <form action="#">
-                            <button type="submit"><i class="fa fa-location-arrow"></i> 등록</button>
-                          </form>
-
-
-
-                          <form method='post' action="{% url 'recommendation:create' %}" enctype='multipart/form-data'>
-                              {% csrf_token %}
-                              <input type="file" name="file">
-                          </form>
-
-
-                          
-
-
-
-
-                      </div>
-                  </div>
-                  
-              </div>
-          </div>
-
-
+                    </div>
+                </div>
 
         </form>
 
 
 
-      </section>
-      <!-- Anime Section End -->
-        <!-- Footer Section Begin -->
-        <footer class="footer">
-          <div class="page-up">
-              <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
-          </div>
-          <div class="container">
-              <div class="row">
-                  <div class="col-lg-3">
-                      <div class="footer__logo">
-                          <a href="http://127.0.0.1:8000/"><img src="{% static 'img/logo1.png' %}" alt=""></a>
-                      </div>
-                  </div>
-        
-                 
-                </div>
-            </div>
-        </footer>
-        <!-- Footer Section End -->
-
-                  <!-- Search model Begin -->
-                  <div class="search-model">
-                    <div class="h-100 d-flex align-items-center justify-content-center">
-                        <div class="search-close-switch"><i class="icon_close"></i></div>
-                        <form class="search-model-form">
-                            <input type="text" id="search-input" placeholder="Search here.....">
-                        </form>
+    </section>
+    <!-- Anime Section End -->
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="page-up">
+            <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer__logo">
+                        <a href="http://127.0.0.1:8000/"><img src="{% static 'img/logo1.png' %}" alt=""></a>
                     </div>
                 </div>
-                <!-- Search model end -->
-        
-                <!-- Js Plugins -->
-                <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-                <script src="{% static 'js/bootstrap.min.js' %}"></script>
-                <script src="{% static 'js/player.js' %}"></script>
-                <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
-                <script src="{% static 'js/mixitup.min.js' %}"></script>
-                <script src="{% static 'js/jquery.slicknav.js' %}"></script>
-                <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-                <script src="{% static 'js/main.js' %}"></script>
-        
-            </body>
-        
-            </html>
+
+
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch"><i class="icon_close"></i></div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
+
+    <!-- Js Plugins -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/player.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/mixitup.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
 
 
 
 
 {% comment %} <html lang="ko">
-  <head>
-      <br>글쓰기 테스트<br/>
-  <meta charset="utf-8">
+
+<head>
+    <br>글쓰기 테스트<br />
+    <meta charset="utf-8">
     <title>HTML</title>
     <style>
-      * {
-        font-size: 16px;
-        font-family: Consolas, sans-serif;
-      }
+        * {
+            font-size: 16px;
+            font-family: Consolas, sans-serif;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <form>
 
-      <p><input placeholder="제목을 입력하세요" style="width:920px;resize: none;"></p>
-      <p><textarea cols="100" rows="20" placeholder="내용을 입력하세요" style="resize: none;"></textarea></p>
-      <p><input type="submit" value="게시"></p>
+        <p><input placeholder="제목을 입력하세요" style="width:920px;resize: none;"></p>
+        <p><textarea cols="100" rows="20" placeholder="내용을 입력하세요" style="resize: none;"></textarea></p>
+        <p><input type="submit" value="게시"></p>
     </form>
-  </body>
+</body>
+
 </html> {% endcomment %}
