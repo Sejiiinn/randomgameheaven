@@ -80,19 +80,14 @@
 
       <form action="{% url 'recommendation:create' %}" method="post">
           {% csrf_token %}
-
-
-
       <div class="container">
           <div class="anime__details__content">
-              
               <div class="row">
                   <div class="col-lg-8 col-md-8">
                       <div class="anime__details__review">
                           <div class="section-title">
                               <h5>글쓰기</h5>
                           </div>
-
                           <div class="anime__review__item">
                               <div class="anime__review__item__text">
                                   <h6>제목</h6>
@@ -100,8 +95,6 @@
                                   <p><input placeholder="제목을 입력하세요." style="width:700px;resize: none;" name="user_game_title"></p>
                               </div>
                           </div>
-
-
                           <div class="anime__review__item">
                             <div class="anime__review__item__text">
                                 <h6>내용</h6>
@@ -109,10 +102,7 @@
                                 <p><textarea cols="84" rows="20" placeholder="내용을 입력하세요. (최대 300자)" style="resize: none;" name="user_game_content"></textarea></p>
                             </div>
                         </div>
-
-
-
-                        <h5><p style="font-size:110%;color:white">사진을 골라주세요.</p></h5>
+                        <h5><p style="font-size:110%;color:white"> 사진을 골라주세요.</p></h5>
                         <form method="POST" action="">
                             {% csrf_token %}
                             <body style="font-size:100%;color:white"><input type="radio" name="user_game_img" value="소주"> 소주&nbsp;&nbsp;</body>
@@ -121,48 +111,25 @@
                             <body style="font-size:100%;color:white"><input type="radio" name="user_game_img" value="와인"> 와인&nbsp;&nbsp;</body>
                             <body style="font-size:100%;color:white"><input type="radio" name="user_game_img" value="위스키"> 위스키&nbsp;&nbsp;</body>
                             <body style="font-size:100%;color:white"><input type="radio" name="user_game_img" value="보드카"> 보드카&nbsp;&nbsp;</body>
-
+                        </form>
                       {% comment %} </div>
                       <div class="anime__details__form">
-
                           <form action="#">
                             <button type="submit"><i class="fa fa-location-arrow"></i> 등록</button>
                           </form> {% endcomment %}
-
                           <div style="float:right" class="anime__details__form">
-
                             <form action="#">
-            
                                 <button type="submit"><i class="fa fa-location-arrow"></i>게시글 등록</button>
-            
                             </form>
-            
                         </div>
-
-
-
-
-
-
                           <form method='post' action="{% url 'recommendation:create' %}" enctype='multipart/form-data'>
                               {% csrf_token %}
                               <input type="file" name="imgfile">
                           </form>
-
-
-                          
-
-
-
-
                       </div>
-                  </div>
-                  
+                  </div>    
               </div>
           </div>
-
-
-
         </form>
 
 
