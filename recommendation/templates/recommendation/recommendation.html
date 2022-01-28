@@ -96,23 +96,36 @@
                                 </div>
 
 
-                                <div class="anime__details__form">
+                                <div class="anime__details__form1">
                                     <div class="section-title">
                                     </div>
                                     <form action="{% url 'recommendation:create' %}">
                                         <span style="float:right;">
-                                            <button type="button"><i class="fa fa-location-arrow"></i><a href="{% url 'recommendation:write' %}">글쓰기</a></button>
+                                            <button type="button"><i class="fa fa-location-arrow"></i><a href="{% url 'recommendation:write' %}" style="color:white">글쓰기</a></button>
                                         </span>
                                     </form>
                                 </div>
 
 
-
-
-
-
                             </div>
                         </div>
+
+
+                        {% if messages %}
+                            {% for message in messages %}
+                            <div class="row" style="margin:20px auto;">
+                                <div class="col-sm-12">
+                                    <div class="alert alert-danger">
+                                    <strong>{{ message.message }}</strong>
+                                    </div>
+                                </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+
+
+
                         {% comment %} <div class="row">
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
@@ -159,27 +172,98 @@
 
                             <div class="row">
                             {% for data in posts %}
+                            {% if data.user_game_img == '소주' %}
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="product__item">
- 
-                                            <div class="product__item__pic set-bg" data-setbg="{% static 'img/shibadog.png' %}">
-                                                <div class="comment">수정</div>
-
+                                            <div class="product__item__pic set-bg" data-setbg="{% static 'img/liq/soju.jpg' %}">
                                             </div>
                                             <div class="product__item__text">
                                                 <FONT size=5 color="white">{{data.user_game_title}}</FONT>
                                             </div>
-
-
                                             <div class="product__item__text">
                                                 <FONT color="white">{{data.user_game_content}}</FONT>
                                             </div>
-
-      
-
-
                                   </div>
                                 </div>
+                            {% elif data.user_game_img == '맥주' %}
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                            <div class="product__item__pic set-bg" data-setbg="{% static 'img/liq/draftbeer.jpg' %}">
+                                            </div>
+                                            <div class="product__item__text">
+                                                <FONT size=5 color="white">{{data.user_game_title}}</FONT>
+                                            </div>
+                                            <div class="product__item__text">
+                                                <FONT color="white">{{data.user_game_content}}</FONT>
+                                            </div>
+                                  </div>
+                                </div>
+                            {% elif data.user_game_img == '막걸리' %}
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                            <div class="product__item__pic set-bg" data-setbg="{% static 'img/liq/makgeolli.jpg' %}">
+                                            </div>
+                                            <div class="product__item__text">
+                                                <FONT size=5 color="white">{{data.user_game_title}}</FONT>
+                                            </div>
+                                            <div class="product__item__text">
+                                                <FONT color="white">{{data.user_game_content}}</FONT>
+                                            </div>
+                                  </div>
+                                </div>
+                            {% elif data.user_game_img == '와인' %}
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                            <div class="product__item__pic set-bg" data-setbg="{% static 'img/liq/wine.png' %}">
+                                            </div>
+                                            <div class="product__item__text">
+                                                <FONT size=5 color="white">{{data.user_game_title}}</FONT>
+                                            </div>
+                                            <div class="product__item__text">
+                                                <FONT color="white">{{data.user_game_content}}</FONT>
+                                            </div>
+                                  </div>
+                                </div>
+                            {% elif data.user_game_img == '위스키' %}
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                            <div class="product__item__pic set-bg" data-setbg="{% static 'img/liq/whisky.jpg' %}">
+                                            </div>
+                                            <div class="product__item__text">
+                                                <FONT size=5 color="white">{{data.user_game_title}}</FONT>
+                                            </div>
+                                            <div class="product__item__text">
+                                                <FONT color="white">{{data.user_game_content}}</FONT>
+                                            </div>
+                                  </div>
+                                </div>
+                            {% elif data.user_game_img == '보드카' %}
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                            <div class="product__item__pic set-bg" data-setbg="{% static 'img/liq/vodka.jpg' %}">
+                                            </div>
+                                            <div class="product__item__text">
+                                                <FONT size=5 color="white">{{data.user_game_title}}</FONT>
+                                            </div>
+                                            <div class="product__item__text">
+                                                <FONT color="white">{{data.user_game_content}}</FONT>
+                                            </div>
+                                  </div>
+                                </div>
+                            {% else %}
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                            <div class="product__item__pic set-bg" data-setbg="{% static 'img/shibadog.png' %}">
+                                            </div>
+                                            <div class="product__item__text">
+                                                <FONT size=5 color="white">{{data.user_game_title}}</FONT>
+                                            </div>
+                                            <div class="product__item__text">
+                                                <FONT color="white">{{data.user_game_content}}</FONT>
+                                            </div>
+                                  </div>
+                                </div>
+                            {% endif %}
                             {%endfor%}
 
                  
@@ -249,7 +333,7 @@
                 <div class="product__pagination">
                     {% for page_number in page_range %}
                     {% if page_number == posts.number %}
-                    <a href='{% url "recommendation:recommendation" %}?page={{ page_number }}'>{{ page_number }}</a>
+                    <a href='{% url "recommendation:recommendation" %}?page={{ page_number }}'><strong><p style="font-size:110%;color:white">{{ page_number }}</p></strong></a>
                     {% else %}
                     <a href='{% url "recommendation:recommendation" %}?page={{ page_number }}'>{{ page_number }}</a>
                     {% endif %}
