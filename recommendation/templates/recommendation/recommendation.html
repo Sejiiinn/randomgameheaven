@@ -172,82 +172,17 @@
 
                             <div class="row">
                             {% for data in posts %}
-                            {% if data.user_game_img == '소주' %}
+                            {% if data.user_game_img != "None" %}
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="product__item">
-                                            <div class="product__item__pic set-bg" data-setbg="{% static 'img/liq/soju.jpg' %}">
-                                            </div>
-                                            <div class="product__item__text">
-                                                <FONT size=5 color="white">{{data.user_game_title}}</FONT>
-                                            </div>
-                                            <div class="product__item__text">
-                                                <FONT color="white">{{data.user_game_content}}</FONT>
-                                            </div>
-                                  </div>
-                                </div>
-                            {% elif data.user_game_img == '맥주' %}
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product__item">
-                                            <div class="product__item__pic set-bg" data-setbg="{% static 'img/liq/draftbeer.jpg' %}">
-                                            </div>
-                                            <div class="product__item__text">
-                                                <FONT size=5 color="white">{{data.user_game_title}}</FONT>
-                                            </div>
-                                            <div class="product__item__text">
-                                                <FONT color="white">{{data.user_game_content}}</FONT>
-                                            </div>
-                                  </div>
-                                </div>
-                            {% elif data.user_game_img == '막걸리' %}
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product__item">
-                                            <div class="product__item__pic set-bg" data-setbg="{% static 'img/liq/makgeolli.jpg' %}">
-                                            </div>
-                                            <div class="product__item__text">
-                                                <FONT size=5 color="white">{{data.user_game_title}}</FONT>
-                                            </div>
-                                            <div class="product__item__text">
-                                                <FONT color="white">{{data.user_game_content}}</FONT>
-                                            </div>
-                                  </div>
-                                </div>
-                            {% elif data.user_game_img == '와인' %}
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product__item">
-                                            <div class="product__item__pic set-bg" data-setbg="{% static 'img/liq/wine.png' %}">
-                                            </div>
-                                            <div class="product__item__text">
-                                                <FONT size=5 color="white">{{data.user_game_title}}</FONT>
-                                            </div>
-                                            <div class="product__item__text">
-                                                <FONT color="white">{{data.user_game_content}}</FONT>
-                                            </div>
-                                  </div>
-                                </div>
-                            {% elif data.user_game_img == '위스키' %}
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product__item">
-                                            <div class="product__item__pic set-bg" data-setbg="{% static 'img/liq/whisky.jpg' %}">
-                                            </div>
-                                            <div class="product__item__text">
-                                                <FONT size=5 color="white">{{data.user_game_title}}</FONT>
-                                            </div>
-                                            <div class="product__item__text">
-                                                <FONT color="white">{{data.user_game_content}}</FONT>
-                                            </div>
-                                  </div>
-                                </div>
-                            {% elif data.user_game_img == '보드카' %}
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product__item">
-                                            <div class="product__item__pic set-bg" data-setbg="{% static 'img/liq/vodka.jpg' %}">
-                                            </div>
-                                            <div class="product__item__text">
-                                                <FONT size=5 color="white">{{data.user_game_title}}</FONT>
-                                            </div>
-                                            <div class="product__item__text">
-                                                <FONT color="white">{{data.user_game_content}}</FONT>
-                                            </div>
+                                        <div class="product__item__pic set-bg" data-setbg="media/{{data.user_game_img}}">
+                                        </div>
+                                        <div class="product__item__text">
+                                            <FONT size=5 color="white">{{data.user_game_title}}</FONT>
+                                        </div>
+                                        <div class="product__item__text">
+                                            <FONT color="white">{{data.user_game_content}}</FONT>
+                                        </div>
                                   </div>
                                 </div>
                             {% else %}
