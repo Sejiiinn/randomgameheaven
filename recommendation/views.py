@@ -4,7 +4,6 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 import datetime
 from django.contrib import messages
-#from sqlalchemy import null
 from recommendation.models import *
 from django.core.paginator import Paginator
 # from login.models import user
