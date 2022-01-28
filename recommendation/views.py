@@ -28,6 +28,17 @@ def recommendation(request):
     if start_page < 1:
         start_page = 1
         end_page = 5
+    if 0 <= paginator.count <= 9:
+        end_page = 1
+    elif 9 < paginator.count <= 18:
+        end_page = 2
+    elif 18 < paginator.count <= 27:
+        end_page = 3
+    elif 27 < paginator.count <= 36:
+        end_page = 4
+    elif 36 < paginator.count <= 45:
+        end_page = 5
+
 
 
     return render(request, 'recommendation/recommendation.html', {'posts' : page_obj, 'auth' : auth, 'page_range' : range(start_page, end_page + 1)})
