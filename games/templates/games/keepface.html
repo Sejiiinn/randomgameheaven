@@ -113,14 +113,26 @@
         var choice = 0;
         var x;
         var tmmsg = document.getElementById("countdown");
+        let paused = false;
         
         function start() {
+            if(count>1){
+                if(paused){
+                    tmmsg.classList.add('start');
+                    paused = false;
+                }
+                else{
+                    return;
+                }
+            }
+            paused = false;
             
             clearInterval(time);
 
             choice = document.tm.setTime.selectedIndex;
-         
-            count = parseInt(document.tm.setTime.options[choice].value);
+            if(count==0){
+                count = parseInt(document.tm.setTime.options[choice].value);
+            }
             
             x = setInterval(function() {
                 min = parseInt(count/60);
@@ -139,6 +151,7 @@
         }
 
         function pause() {
+            paused = true;
             clearInterval(x);
             tmmsg.classList.remove('start');
         }
@@ -147,6 +160,7 @@
             tmmsg.innerHTML = '웃음 참기 시작';
             clearInterval(x);
             tmmsg.classList.remove('start');
+            count = 0;
         }
 
         function init() {
