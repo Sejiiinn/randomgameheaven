@@ -18,12 +18,12 @@ function clearOptions() {
 
 var scrolledIDs = [];
 
-//scrolls element after given delay in milliseconds 
+//scrolls element after given delay in milliseconds  여기서 갯수 추가해야함
 function scroll(delay, quitArg){
-    var IDNum = randInt(2,8);  
+    var IDNum = randInt(2,9);  
     //reassign randNum if already scrolled
     while (!(scrolledIDs.indexOf(IDNum) === -1)) {
-      IDNum = randInt(2,8);
+      IDNum = randInt(2,9);
     }
     
     var id = "#num"+IDNum.toString();
