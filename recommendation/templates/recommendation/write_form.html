@@ -97,7 +97,7 @@
                               <div class="anime__review__item__text">
                                   <h6>제목</h6>
                                   <form action="" method="post">
-                                  <p><input placeholder="제목을 입력하세요" style="width:700px;resize: none;" name="user_game_title"></p>
+                                  <p><input placeholder="제목을 입력하세요." style="width:700px;resize: none;" name="user_game_title"></p>
                               </div>
                           </div>
 
@@ -106,7 +106,7 @@
                             <div class="anime__review__item__text">
                                 <h6>내용</h6>
                                 <form action="" method="post">
-                                <p><textarea cols="84" rows="20" placeholder="내용을 입력하세요" style="resize: none;" name="user_game_content"></textarea></p>
+                                <p><textarea cols="84" rows="20" placeholder="내용을 입력하세요. (최대 300자)" style="resize: none;" name="user_game_content"></textarea></p>
                             </div>
                         </div>
 
@@ -122,18 +122,31 @@
                             <body style="font-size:100%;color:white"><input type="radio" name="user_game_img" value="위스키"> 위스키&nbsp;&nbsp;</body>
                             <body style="font-size:100%;color:white"><input type="radio" name="user_game_img" value="보드카"> 보드카&nbsp;&nbsp;</body>
 
-                      </div>
+                      {% comment %} </div>
                       <div class="anime__details__form">
 
                           <form action="#">
                             <button type="submit"><i class="fa fa-location-arrow"></i> 등록</button>
-                          </form>
+                          </form> {% endcomment %}
+
+                          <div style="float:right" class="anime__details__form">
+
+                            <form action="#">
+            
+                                <button type="submit"><i class="fa fa-location-arrow"></i>게시글 등록</button>
+            
+                            </form>
+            
+                        </div>
+
+
+
 
 
 
                           <form method='post' action="{% url 'recommendation:create' %}" enctype='multipart/form-data'>
                               {% csrf_token %}
-                              <input type="file" name="file">
+                              <input type="file" name="imgfile">
                           </form>
 
 
